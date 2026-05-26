@@ -287,10 +287,10 @@
                 </div>
             </div>
 
-            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-3 text-[10px] tracking-[0.4em] uppercase text-muted-foreground">
-                <span>Scroll</span>
-                <span class="block h-12 w-px bg-gradient-to-b from-gold/60 to-transparent"></span>
-            </div>
+            <a href="#studio" class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-3 text-[10px] tracking-[0.4em] uppercase text-muted-foreground transition-all duration-500 hover:text-gold group">
+                <span class="transition-transform duration-500 group-hover:-translate-y-1">Scroll</span>
+                <span class="block h-12 w-px bg-gradient-to-b from-gold/60 to-transparent transition-all duration-500 group-hover:h-16 group-hover:from-gold"></span>
+            </a>
         </section>
 
         <!-- Studio Section -->
@@ -759,7 +759,8 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="relative pt-32 md:pt-44 pb-0 overflow-hidden">
+        <!-- Contact Section -->
+        <section id="contact" class="relative pt-32 md:pt-44 pb-12 md:pb-20 overflow-hidden">
             <div class="absolute inset-0 -z-10" style="background: radial-gradient(circle at 50% 80%, oklch(0.82 0.105 80 / 0.18), transparent 60%);"></div>
             <div class="mx-auto max-w-[1600px] px-6 md:px-10">
                 <div class="reveal">
@@ -829,22 +830,23 @@
                     </div>
                 </div>
             </div>
+        </section>
 
-            <footer class="mt-0 border-t border-border">
-                <div class="mx-auto flex max-w-[1600px] flex-col md:flex-row items-start md:items-center justify-between gap-6 px-6 md:px-10 py-10 text-[11px] tracking-[0.2em] uppercase text-muted-foreground">
-                    <div class="flex items-center gap-3">
-                        <span class="size-2 rounded-full bg-gold"></span>
-                        <span class="font-display normal-case tracking-normal text-foreground text-base">Aether</span>
-                        <span>© MMXXVI</span>
-                    </div>
-                    <div class="flex flex-wrap gap-8">
-                        <a href="#" class="hover:text-gold">Instagram</a>
-                        <a href="#" class="hover:text-gold">Are.na</a>
-                        <a href="#" class="hover:text-gold">Journal</a>
-                        <a href="#" class="hover:text-gold">Imprint</a>
-                    </div>
+        <footer class="border-t border-border">
+            <div class="mx-auto flex max-w-[1600px] flex-col md:flex-row items-start md:items-center justify-between gap-6 px-6 md:px-10 py-10 text-[11px] tracking-[0.2em] uppercase text-muted-foreground">
+                <div class="flex items-center gap-3">
+                    <span class="size-2 rounded-full bg-gold"></span>
+                    <span class="font-display normal-case tracking-normal text-foreground text-base">Aether</span>
+                    <span>© MMXXVI</span>
                 </div>
-            </footer>
+                <div class="flex flex-wrap gap-8">
+                    <a href="#" class="hover:text-gold transition-colors">Instagram</a>
+                    <a href="#" class="hover:text-gold transition-colors">Are.na</a>
+                    <a href="#" class="hover:text-gold transition-colors">Journal</a>
+                    <a href="#" class="hover:text-gold transition-colors">Imprint</a>
+                </div>
+            </div>
+        </footer>
         </section>
     </main>
 
