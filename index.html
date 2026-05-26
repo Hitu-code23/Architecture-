@@ -1,1526 +1,992 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Website Proposal — Zariya Designer Wear</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
---gold: #B88669;
---gold-light: #D9B99A;
---gold-dim: #7a5a46;
---dark: #0E0C0A;
---charcoal: #1C1915;
---mid: #2E2A24;
---cream: #F5F0E8;
---text-muted: #8C8070;
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-background: var(--dark);
-color: var(--cream);
-font-family: 'Montserrat', sans-serif;
-font-weight: 300;
-line-height: 1.7;
-overflow-x: hidden;
-}
-
-body::before {
-content: '';
-position: fixed;
-inset: 0;
-background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-pointer-events: none;
-z-index: 9999;
-opacity: 0.5;
-}
-
-/* ── COVER ── */
-.cover {
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-text-align: center;
-padding: 60px 24px;
-position: relative;
-background: radial-gradient(ellipse 80% 60% at 50% 40%, #231a12 0%, var(--dark) 70%);
-border-bottom: 1px solid #2a2016;
-}
-
-.cover::after {
-content: '';
-position: absolute;
-bottom: 0; left: 10%; right: 10%;
-height: 1px;
-background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
-
-.badge {
-font-size: 10px;
-letter-spacing: 4px;
-text-transform: uppercase;
-color: var(--gold);
-border: 1px solid #3a2a1e;
-padding: 8px 20px;
-margin-bottom: 48px;
-animation: fadeUp 0.8s ease both;
-}
-
-.cover-brand {
-font-family: 'Cormorant Garamond', serif;
-font-size: clamp(42px, 9vw, 96px);
-font-weight: 300;
-letter-spacing: 0.08em;
-line-height: 1.1;
-color: var(--cream);
-animation: fadeUp 0.9s 0.1s ease both;
-}
-
-.cover-brand em { font-style: italic; color: var(--gold); }
-
-.cover-sub {
-margin-top: 20px;
-font-size: 11px;
-letter-spacing: 5px;
-text-transform: uppercase;
-color: var(--text-muted);
-animation: fadeUp 0.9s 0.2s ease both;
-}
-
-.cover-divider {
-width: 60px; height: 1px;
-background: linear-gradient(90deg, transparent, var(--gold), transparent);
-margin: 40px auto;
-animation: fadeUp 0.9s 0.3s ease both;
-}
-
-.cover-tagline {
-font-family: 'Cormorant Garamond', serif;
-font-size: clamp(16px, 3vw, 22px);
-font-style: italic;
-font-weight: 300;
-color: var(--gold-light);
-max-width: 520px;
-animation: fadeUp 0.9s 0.4s ease both;
-}
-
-.cover-meta {
-margin-top: 60px;
-font-size: 11px;
-letter-spacing: 2px;
-color: var(--text-muted);
-animation: fadeUp 0.9s 0.5s ease both;
-}
-
-/* ── SECTIONS ── */
-section {
-padding: 80px 24px;
-max-width: 860px;
-margin: 0 auto;
-}
-
-.section-label {
-font-size: 10px;
-letter-spacing: 4px;
-text-transform: uppercase;
-color: var(--gold);
-margin-bottom: 32px;
-display: flex;
-align-items: center;
-gap: 16px;
-}
-
-.section-label::before {
-content: '';
-display: block;
-width: 32px; height: 1px;
-background: var(--gold);
-opacity: 0.6;
-}
-
-h2 {
-font-family: 'Cormorant Garamond', serif;
-font-size: clamp(30px, 5vw, 48px);
-font-weight: 300;
-line-height: 1.2;
-margin-bottom: 28px;
-color: var(--cream);
-}
-
-h2 em { color: var(--gold); font-style: italic; }
-
-p {
-color: #b0a898;
-font-size: 14px;
-margin-bottom: 18px;
-font-weight: 300;
-}
-
-p strong { color: var(--cream); font-weight: 500; }
-
-hr.fancy {
-border: none;
-height: 1px;
-background: linear-gradient(90deg, transparent, #2e2a24, transparent);
-margin: 0;
-}
-
-/* ── INSIGHT BOX ── */
-.insight-box {
-background: linear-gradient(135deg, #1e1a14 0%, #17130e 100%);
-border: 1px solid #2e2010;
-border-left: 3px solid var(--gold);
-padding: 32px 36px;
-margin: 36px 0;
-font-family: 'Cormorant Garamond', serif;
-font-size: clamp(18px, 3vw, 24px);
-font-style: italic;
-color: var(--gold-light);
-line-height: 1.5;
-}
-
-/* ── FEATURES ── */
-.features {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-gap: 2px;
-margin: 40px 0;
-border: 1px solid #1e1a14;
-}
-
-.feature {
-background: #13100d;
-padding: 32px 28px;
-transition: background 0.3s;
-position: relative;
-overflow: hidden;
-}
-
-.feature::before {
-content: '';
-position: absolute;
-top: 0; left: 0; right: 0;
-height: 2px;
-background: linear-gradient(90deg, transparent, var(--gold), transparent);
-transform: scaleX(0);
-transition: transform 0.4s ease;
-}
-
-.feature:hover { background: #1a1610; }
-.feature:hover::before { transform: scaleX(1); }
-
-.feature-num {
-font-family: 'Cormorant Garamond', serif;
-font-size: 40px;
-font-weight: 300;
-color: #2a1e14;
-line-height: 1;
-margin-bottom: 12px;
-}
-
-.feature-title {
-font-size: 12px;
-letter-spacing: 2px;
-text-transform: uppercase;
-color: var(--gold);
-margin-bottom: 10px;
-font-weight: 500;
-}
-
-.feature-desc {
-font-size: 13px;
-color: #7a7060;
-line-height: 1.6;
-margin: 0;
-}
-
-/* ── TIMELINE ── */
-.timeline {
-margin: 40px 0;
-position: relative;
-}
-
-.timeline::before {
-content: '';
-position: absolute;
-left: 20px; top: 0; bottom: 0;
-width: 1px;
-background: linear-gradient(180deg, var(--gold), transparent);
-}
-
-.tl-item {
-padding: 0 0 36px 56px;
-position: relative;
-}
-
-.tl-dot {
-position: absolute;
-left: 14px; top: 4px;
-width: 13px; height: 13px;
-border: 1px solid var(--gold);
-background: var(--dark);
-transform: rotate(45deg);
-}
-
-.tl-phase {
-font-size: 10px;
-letter-spacing: 3px;
-text-transform: uppercase;
-color: var(--gold);
-margin-bottom: 6px;
-}
-
-.tl-title {
-font-family: 'Cormorant Garamond', serif;
-font-size: 20px;
-color: var(--cream);
-margin-bottom: 6px;
-}
-
-.tl-desc {
-font-size: 13px;
-color: #7a7060;
-margin: 0;
-}
-
-/* ── PRICING ── */
-.pricing-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-gap: 2px;
-margin: 40px 0;
-}
-
-.price-card {
-background: #13100d;
-border: 1px solid #1e1a14;
-padding: 36px 28px;
-text-align: center;
-position: relative;
-transition: border-color 0.3s;
-}
-
-.price-card.featured {
-border-color: var(--gold);
-background: #1a1208;
-}
-
-.price-card.featured::before {
-content: 'RECOMMENDED';
-position: absolute;
-top: -1px; left: 50%;
-transform: translateX(-50%);
-background: var(--gold);
-color: var(--dark);
-font-size: 9px;
-letter-spacing: 2px;
-padding: 4px 14px;
-font-weight: 600;
-}
-
-.price-tier {
-font-size: 10px;
-letter-spacing: 3px;
-text-transform: uppercase;
-color: var(--text-muted);
-margin-bottom: 20px;
-}
-
-.price-amount {
-font-family: 'Cormorant Garamond', serif;
-font-size: 48px;
-font-weight: 300;
-color: var(--gold);
-line-height: 1;
-}
-
-.price-currency {
-font-size: 20px;
-vertical-align: top;
-margin-top: 10px;
-display: inline-block;
-}
-
-.price-period {
-font-size: 11px;
-color: var(--text-muted);
-margin-top: 6px;
-margin-bottom: 24px;
-letter-spacing: 1px;
-}
-
-.price-features {
-list-style: none;
-text-align: left;
-}
-
-.price-features li {
-font-size: 12px;
-color: #7a7060;
-padding: 7px 0;
-border-bottom: 1px solid #1e1a14;
-display: flex;
-align-items: flex-start;
-gap: 10px;
-margin: 0;
-}
-
-.price-features li::before {
-content: '◆';
-font-size: 6px;
-color: var(--gold);
-margin-top: 5px;
-flex-shrink: 0;
-}
-
-/* ── WHY ME ── */
-.why-grid {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 20px;
-margin: 40px 0;
-}
-
-
-
-.why-item {
-border-left: 1px solid #3a2418;
-padding-left: 20px;
-}
-
-.why-item-title {
-font-size: 12px;
-letter-spacing: 1px;
-text-transform: uppercase;
-color: var(--cream);
-font-weight: 500;
-margin-bottom: 6px;
-}
-
-.why-item-text {
-font-size: 13px;
-color: #6a6050;
-margin: 0;
-}
-
-/* ══════════════════════════════════
-   ── WHAT HAPPENS AFTER YOU SAY YES ──
-══════════════════════════════════ */
-.after-yes-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-gap: 0;
-margin: 48px 0;
-border: 1px solid #221a12;
-position: relative;
-}
-
-.after-yes-grid::before {
-content: '';
-position: absolute;
-top: 50%; left: 0; right: 0;
-height: 1px;
-background: linear-gradient(90deg, transparent, #2a1e14, transparent);
-pointer-events: none;
-}
-
-.ay-step {
-background: #11100d;
-padding: 32px 24px;
-border-right: 1px solid #221a12;
-position: relative;
-transition: background 0.3s;
-}
-
-.ay-step:last-child { border-right: none; }
-.ay-step:hover { background: #1a1510; }
-
-.ay-step-num {
-font-family: 'Cormorant Garamond', serif;
-font-size: 52px;
-font-weight: 300;
-color: var(--gold);
-opacity: 0.18;
-line-height: 1;
-margin-bottom: 10px;
-}
-
-.ay-step-icon {
-font-size: 22px;
-margin-bottom: 12px;
-display: block;
-color: var(--gold);
-}
-
-.ay-step-icon svg {
-width: 24px;
-height: 24px;
-stroke-width: 1.5;
-}
-
-.ay-step-title {
-font-size: 11px;
-letter-spacing: 2px;
-text-transform: uppercase;
-color: var(--gold);
-margin-bottom: 8px;
-font-weight: 500;
-}
-
-.ay-step-text {
-font-size: 12px;
-color: #6a6050;
-line-height: 1.6;
-margin: 0;
-}
-
-/* ══════════════════════════════════
-   ── PROGRESS CHECKLIST ──
-══════════════════════════════════ */
-.checklist-wrap {
-margin: 48px 0;
-display: flex;
-flex-direction: column;
-gap: 0;
-}
-
-.cl-item {
-display: flex;
-align-items: flex-start;
-gap: 24px;
-padding: 22px 28px;
-border: 1px solid #1e1612;
-border-bottom: none;
-position: relative;
-transition: background 0.3s;
-background: #100e0b;
-}
-
-.cl-item:first-child { border-radius: 0; }
-.cl-item:last-child { border-bottom: 1px solid #1e1612; }
-.cl-item:hover { background: #1a1510; }
-
-.cl-item::before {
-content: '';
-position: absolute;
-left: 0; top: 0; bottom: 0;
-width: 3px;
-background: transparent;
-transition: background 0.3s;
-}
-
-.cl-item:hover::before { background: var(--gold); }
-
-.cl-check {
-width: 28px;
-height: 28px;
-border: 1px solid var(--gold);
-flex-shrink: 0;
-display: flex;
-align-items: center;
-justify-content: center;
-margin-top: 2px;
-position: relative;
-transform: rotate(45deg);
-}
-
-.cl-check.done {
-background: var(--gold);
-}
-
-.cl-check .inner {
-transform: rotate(-45deg);
-font-size: 12px;
-color: var(--dark);
-font-weight: 700;
-line-height: 1;
-}
-
-.cl-check.empty .inner {
-transform: rotate(-45deg);
-width: 8px;
-height: 8px;
-background: transparent;
-}
-
-.cl-body { flex: 1; }
-
-.cl-title {
-font-size: 13px;
-letter-spacing: 1px;
-text-transform: uppercase;
-color: var(--cream);
-font-weight: 500;
-margin-bottom: 4px;
-}
-
-.cl-desc {
-font-size: 12px;
-color: #6a6050;
-margin: 0;
-}
-
-.cl-tag {
-font-size: 10px;
-letter-spacing: 2px;
-text-transform: uppercase;
-color: var(--gold);
-background: #1e1410;
-border: 1px solid #3a2418;
-padding: 3px 10px;
-align-self: center;
-white-space: nowrap;
-flex-shrink: 0;
-}
-
-/* ══════════════════════════════════
-   ── PAYMENT TERMS ──
-══════════════════════════════════ */
-.payment-row {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-gap: 2px;
-margin: 40px 0;
-}
-
-@media (max-width: 600px) { .payment-row { grid-template-columns: 1fr; } }
-
-.payment-card {
-background: #11100d;
-border: 1px solid #221a12;
-padding: 32px 24px;
-text-align: center;
-position: relative;
-}
-
-.payment-card::after {
-content: '';
-position: absolute;
-bottom: 0; left: 20%; right: 20%;
-height: 2px;
-background: linear-gradient(90deg, transparent, var(--gold), transparent);
-opacity: 0;
-transition: opacity 0.3s;
-}
-
-.payment-card:hover::after { opacity: 1; }
-
-.payment-pct {
-font-family: 'Cormorant Garamond', serif;
-font-size: 56px;
-font-weight: 300;
-color: var(--gold);
-line-height: 1;
-}
-
-.payment-pct span {
-font-size: 28px;
-vertical-align: top;
-margin-top: 10px;
-display: inline-block;
-}
-
-.payment-label {
-font-size: 10px;
-letter-spacing: 3px;
-text-transform: uppercase;
-color: var(--text-muted);
-margin: 10px 0 14px;
-}
-
-.payment-desc {
-font-size: 12px;
-color: #5a5040;
-line-height: 1.6;
-}
-
-.payment-note {
-background: #1a1208;
-border: 1px solid #3a2418;
-border-left: 3px solid var(--gold);
-padding: 20px 28px;
-margin-top: 24px;
-font-size: 13px;
-color: #8a7860;
-line-height: 1.6;
-}
-
-.payment-note strong { color: var(--gold-light); font-weight: 400; }
-
-/* ══════════════════════════════════
-   ── GUARANTEE ──
-══════════════════════════════════ */
-.guarantee-box {
-background: linear-gradient(145deg, #1a1208 0%, #0e0c0a 100%);
-border: 1px solid #3a2418;
-padding: 56px 48px;
-margin: 40px 0;
-position: relative;
-text-align: center;
-}
-
-.guarantee-box::before {
-content: '';
-position: absolute;
-top: 0; left: 0; right: 0;
-height: 2px;
-background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
-
-.guarantee-box::after {
-content: '';
-position: absolute;
-bottom: 0; left: 0; right: 0;
-height: 2px;
-background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
-
-.guarantee-seal {
-width: 80px;
-height: 80px;
-border: 1px solid var(--gold);
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-margin: 0 auto 32px;
-position: relative;
-}
-
-.guarantee-seal::before {
-content: '';
-position: absolute;
-inset: 5px;
-border: 1px solid #3a2418;
-border-radius: 50%;
-}
-
-.guarantee-seal-icon {
-font-size: 30px;
-position: relative;
-z-index: 1;
-}
-
-.guarantee-title {
-font-family: 'Cormorant Garamond', serif;
-font-size: clamp(24px, 4vw, 36px);
-font-weight: 300;
-color: var(--cream);
-margin-bottom: 16px;
-}
-
-.guarantee-title em { color: var(--gold); font-style: italic; }
-
-.guarantee-text {
-font-size: 14px;
-color: #8a7860;
-max-width: 560px;
-margin: 0 auto 32px;
-}
-
-.guarantee-pills {
-display: flex;
-flex-wrap: wrap;
-gap: 10px;
-justify-content: center;
-}
-
-.g-pill {
-font-size: 10px;
-letter-spacing: 2px;
-text-transform: uppercase;
-border: 1px solid #3a2418;
-color: var(--gold);
-padding: 6px 16px;
-background: #1a1208;
-}
-
-/* ══════════════════════════════════
-   ── FAQ ──
-══════════════════════════════════ */
-.faq-list {
-margin: 40px 0;
-display: flex;
-flex-direction: column;
-gap: 2px;
-}
-
-.faq-item {
-background: #11100d;
-border: 1px solid #1e1612;
-overflow: hidden;
-}
-
-.faq-q {
-padding: 22px 28px;
-cursor: pointer;
-display: flex;
-justify-content: space-between;
-align-items: center;
-gap: 16px;
-font-size: 13px;
-letter-spacing: 0.5px;
-color: var(--cream);
-font-weight: 400;
-user-select: none;
-transition: background 0.2s;
-}
-
-.faq-q:hover { background: #1a1510; }
-
-.faq-q .faq-icon {
-font-family: 'Cormorant Garamond', serif;
-font-size: 22px;
-color: var(--gold);
-flex-shrink: 0;
-transition: transform 0.3s ease;
-line-height: 1;
-}
-
-.faq-item.open .faq-icon { transform: rotate(45deg); }
-
-.faq-a {
-max-height: 0;
-overflow: hidden;
-transition: max-height 0.4s ease, padding 0.3s ease;
-font-size: 13px;
-color: #6a6050;
-padding: 0 28px;
-border-top: 0px solid transparent;
-transition: max-height 0.4s ease, padding 0.3s ease, border-top 0.3s;
-}
-
-.faq-item.open .faq-a {
-max-height: 300px;
-padding: 20px 28px 24px;
-border-top: 1px solid #1e1612;
-}
-
-/* ── CTA ── */
-.cta-section {
-background: linear-gradient(135deg, #1e1208, #0e0c0a);
-border: 1px solid #2a1e14;
-border-top: 2px solid var(--gold);
-padding: 64px 40px;
-text-align: center;
-margin: 0 24px 80px;
-max-width: 860px;
-margin-left: auto;
-margin-right: auto;
-position: relative;
-}
-
-.cta-section::before {
-content: '✦';
-position: absolute;
-top: -14px; left: 50%;
-transform: translateX(-50%);
-background: var(--dark);
-color: var(--gold);
-padding: 0 12px;
-font-size: 16px;
-}
-
-.cta-section h2 { margin-bottom: 16px; }
-
-.contact-list {
-list-style: none;
-margin: 32px 0;
-display: flex;
-flex-direction: column;
-gap: 12px;
-align-items: center;
-}
-
-.contact-list li {
-font-size: 13px;
-color: var(--text-muted);
-letter-spacing: 1px;
-margin: 0;
-}
-
-.contact-list li strong {
-color: var(--gold);
-font-weight: 400;
-}
-
-.sign-off {
-margin-top: 48px;
-font-family: 'Cormorant Garamond', serif;
-font-style: italic;
-font-size: 18px;
-color: var(--gold-light);
-}
-
-/* ── FOOTER ── */
-footer {
-text-align: center;
-padding: 24px;
-font-size: 11px;
-color: #3a3020;
-letter-spacing: 2px;
-border-top: 1px solid #1a1208;
-}
-
-@keyframes fadeUp {
-from { opacity: 0; transform: translateY(24px); }
-to { opacity: 1; transform: translateY(0); }
-}
-
-/* ══════════════════════════════════
-   ── MOBILE OPTIMIZATION (< 640px) ──
-══════════════════════════════════ */
-@media (max-width: 639px) {
-  body { font-size: 14px; }
-  
-  .cover { padding: 40px 16px; min-height: 80vh; }
-  .badge { font-size: 9px; padding: 6px 16px; margin-bottom: 32px; }
-  .cover-brand { font-size: clamp(32px, 8vw, 48px); }
-  .cover-sub { font-size: 10px; letter-spacing: 3px; margin-top: 16px; }
-  .cover-divider { margin: 28px auto; }
-  .cover-tagline { font-size: clamp(14px, 2.5vw, 18px); max-width: 90%; }
-  .cover-meta { font-size: 10px; margin-top: 40px; }
-  
-  section { padding: 48px 16px; max-width: 100%; }
-  .section-label { font-size: 9px; margin-bottom: 24px; }
-  .section-label::before { width: 24px; }
-  
-  h2 { font-size: clamp(24px, 6vw, 36px); margin-bottom: 20px; }
-  p { font-size: 13px; margin-bottom: 14px; }
-  
-  .insight-box { padding: 20px 16px; font-size: clamp(14px, 2vw, 18px); margin: 24px 0; }
-  
-  .features { grid-template-columns: 1fr; gap: 1px; margin: 24px 0; }
-  .feature { padding: 20px 16px; }
-  .feature-num { font-size: 32px; margin-bottom: 8px; }
-  .feature-title { font-size: 11px; margin-bottom: 6px; }
-  .feature-desc { font-size: 12px; }
-  
-  .timeline::before { left: 16px; }
-  .tl-item { padding: 0 0 24px 40px; }
-  .tl-dot { left: 10px; }
-  .tl-phase { font-size: 9px; }
-  .tl-title { font-size: 16px; }
-  .tl-desc { font-size: 12px; }
-  
-  .after-yes-grid { grid-template-columns: 1fr; gap: 0; margin: 32px 0; }
-  .ay-step { padding: 20px 16px; border-right: none; border-bottom: 1px solid #221a12; }
-  .ay-step:last-child { border-bottom: none; }
-  .ay-step-num { font-size: 40px; }
-  .ay-step-icon svg { width: 20px; height: 20px; }
-  .ay-step-title { font-size: 10px; }
-  .ay-step-text { font-size: 11px; }
-  
-  .checklist-wrap { margin: 32px 0; }
-  .cl-item { padding: 16px 12px; gap: 16px; }
-  .cl-check { width: 24px; height: 24px; }
-  .cl-title { font-size: 12px; }
-  .cl-desc { font-size: 11px; }
-  .cl-tag { font-size: 9px; padding: 2px 8px; }
-  
-  .pricing-grid { grid-template-columns: 1fr; gap: 1px; margin: 24px 0; }
-  .price-card { padding: 24px 16px; }
-  .price-amount { font-size: 40px; }
-  .price-tier { font-size: 9px; }
-  .price-period { font-size: 10px; }
-  .price-features li { font-size: 11px; padding: 5px 0; }
-  
-  .why-grid { grid-template-columns: 1fr; gap: 12px; margin: 24px 0; }
-  .why-item { border-left: none; border-top: 1px solid #3a2418; padding-left: 0; padding-top: 12px; }
-  .why-item-title { font-size: 11px; }
-  .why-item-text { font-size: 12px; }
-  
-  .payment-row { grid-template-columns: 1fr; gap: 1px; margin: 24px 0; }
-  .payment-card { padding: 20px 16px; }
-  .payment-pct { font-size: 44px; }
-  .payment-label { font-size: 9px; }
-  .payment-desc { font-size: 11px; }
-  
-  .guarantee-box { padding: 32px 20px; margin: 24px 0; }
-  .guarantee-seal { width: 60px; height: 60px; margin: 0 auto 20px; }
-  .guarantee-seal-icon { font-size: 24px; }
-  .guarantee-title { font-size: clamp(20px, 4vw, 28px); margin-bottom: 12px; }
-  .guarantee-text { font-size: 12px; margin: 0 auto 20px; }
-  .g-pill { font-size: 9px; padding: 4px 12px; }
-  
-  .faq-list { margin: 24px 0; }
-  .faq-q { padding: 16px 16px; font-size: 12px; }
-  .faq-q .faq-icon { font-size: 18px; }
-  .faq-a { font-size: 12px; padding: 0 16px; }
-  .faq-item.open .faq-a { padding: 16px 16px 20px; }
-  
-  .cta-section { padding: 40px 20px; margin: 0 16px 48px; }
-  .cta-section h2 { margin-bottom: 12px; }
-  .contact-list { margin: 20px 0; gap: 8px; }
-  .contact-list li { font-size: 12px; }
-  .sign-off { margin-top: 32px; font-size: 16px; }
-  
-  footer { padding: 16px; font-size: 10px; }
-}
-
-/* ══════════════════════════════════
-   ── TABLET OPTIMIZATION (640px - 1024px) ──
-══════════════════════════════════ */
-@media (min-width: 640px) and (max-width: 1024px) {
-  body { font-size: 15px; }
-  
-  .cover { padding: 50px 32px; min-height: 90vh; }
-  .badge { font-size: 9px; padding: 7px 18px; margin-bottom: 40px; }
-  .cover-brand { font-size: clamp(48px, 8vw, 72px); }
-  .cover-sub { font-size: 10px; letter-spacing: 4px; margin-top: 18px; }
-  .cover-divider { margin: 32px auto; }
-  .cover-tagline { font-size: clamp(16px, 3vw, 20px); max-width: 480px; }
-  .cover-meta { font-size: 11px; margin-top: 48px; }
-  
-  section { padding: 64px 32px; max-width: 100%; }
-  .section-label { font-size: 9px; margin-bottom: 28px; }
-  
-  h2 { font-size: clamp(28px, 5vw, 40px); margin-bottom: 24px; }
-  p { font-size: 14px; margin-bottom: 16px; }
-  
-  .insight-box { padding: 28px 32px; font-size: clamp(16px, 2.5vw, 22px); margin: 32px 0; }
-  
-  .features { grid-template-columns: repeat(2, 1fr); gap: 1px; margin: 32px 0; }
-  .feature { padding: 28px 24px; }
-  .feature-num { font-size: 36px; margin-bottom: 10px; }
-  .feature-title { font-size: 11px; }
-  .feature-desc { font-size: 13px; }
-  
-  .timeline::before { left: 24px; }
-  .tl-item { padding: 0 0 32px 48px; }
-  .tl-dot { left: 18px; }
-  .tl-phase { font-size: 9px; }
-  .tl-title { font-size: 18px; }
-  .tl-desc { font-size: 13px; }
-  
-  .after-yes-grid { grid-template-columns: repeat(2, 1fr); gap: 0; margin: 40px 0; }
-  .ay-step { padding: 28px 22px; }
-  .ay-step-num { font-size: 48px; }
-  .ay-step-icon svg { width: 22px; height: 22px; }
-  .ay-step-title { font-size: 10px; }
-  .ay-step-text { font-size: 12px; }
-  
-  .checklist-wrap { margin: 40px 0; }
-  .cl-item { padding: 20px 24px; gap: 20px; }
-  .cl-check { width: 26px; height: 26px; }
-  .cl-title { font-size: 12px; }
-  .cl-desc { font-size: 12px; }
-  .cl-tag { font-size: 9px; padding: 3px 10px; }
-  
-  .pricing-grid { grid-template-columns: repeat(2, 1fr); gap: 1px; margin: 32px 0; }
-  .price-card { padding: 32px 24px; }
-  .price-amount { font-size: 44px; }
-  .price-tier { font-size: 9px; }
-  .price-period { font-size: 11px; }
-  .price-features li { font-size: 12px; padding: 6px 0; }
-  
-  .why-grid { grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
-  .why-item { border-left: 1px solid #3a2418; padding-left: 16px; }
-  .why-item-title { font-size: 11px; }
-  .why-item-text { font-size: 13px; }
-  
-  .payment-row { grid-template-columns: repeat(2, 1fr); gap: 1px; margin: 32px 0; }
-  .payment-card { padding: 28px 22px; }
-  .payment-pct { font-size: 48px; }
-  .payment-label { font-size: 9px; }
-  .payment-desc { font-size: 12px; }
-  
-  .guarantee-box { padding: 48px 40px; margin: 32px 0; }
-  .guarantee-seal { width: 70px; height: 70px; margin: 0 auto 28px; }
-  .guarantee-seal-icon { font-size: 28px; }
-  .guarantee-title { font-size: clamp(24px, 4vw, 32px); margin-bottom: 14px; }
-  .guarantee-text { font-size: 13px; margin: 0 auto 28px; }
-  .g-pill { font-size: 9px; padding: 5px 14px; }
-  
-  .faq-list { margin: 32px 0; }
-  .faq-q { padding: 20px 24px; font-size: 13px; }
-  .faq-q .faq-icon { font-size: 20px; }
-  .faq-a { font-size: 13px; padding: 0 24px; }
-  .faq-item.open .faq-a { padding: 18px 24px 22px; }
-  
-  .cta-section { padding: 56px 36px; margin: 0 32px 64px; }
-  .cta-section h2 { margin-bottom: 14px; }
-  .contact-list { margin: 28px 0; gap: 10px; }
-  .contact-list li { font-size: 13px; }
-  .sign-off { margin-top: 40px; font-size: 18px; }
-  
-  footer { padding: 20px; font-size: 10px; }
-}
-
-/* ══════════════════════════════════
-   ── DESKTOP OPTIMIZATION (> 1024px) ──
-══════════════════════════════════ */
-@media (min-width: 1025px) {
-  .features { grid-template-columns: repeat(3, 1fr); }
-  .after-yes-grid { grid-template-columns: repeat(5, 1fr); }
-  .pricing-grid { grid-template-columns: repeat(3, 1fr); }
-  .payment-row { grid-template-columns: repeat(3, 1fr); }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aether — Architecture Studio · Tokyo · Copenhagen</title>
+    <meta name="description" content="Aether is an international architecture studio shaping residences, cultural pavilions and civic landmarks at the threshold of mass and light.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (Play CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ["Fraunces", "Cormorant Garamond", "ui-serif", "Georgia", "serif"],
+                        sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+                        mono: ["JetBrains Mono", "ui-monospace", "monospace"],
+                    },
+                    colors: {
+                        background: "oklch(0.14 0.005 60)",
+                        foreground: "oklch(0.96 0.012 80)",
+                        card: "oklch(0.18 0.006 60)",
+                        "card-foreground": "oklch(0.96 0.012 80)",
+                        popover: "oklch(0.18 0.006 60)",
+                        "popover-foreground": "oklch(0.96 0.012 80)",
+                        primary: "oklch(0.82 0.105 80)",
+                        "primary-foreground": "oklch(0.14 0.005 60)",
+                        secondary: "oklch(0.22 0.006 60)",
+                        "secondary-foreground": "oklch(0.96 0.012 80)",
+                        muted: "oklch(0.22 0.006 60)",
+                        "muted-foreground": "oklch(0.65 0.012 70)",
+                        accent: "oklch(0.82 0.105 80)",
+                        "accent-foreground": "oklch(0.14 0.005 60)",
+                        border: "oklch(1 0 0 / 8%)",
+                        gold: "oklch(0.82 0.105 80)",
+                        "gold-soft": "oklch(0.72 0.08 75)",
+                        concrete: "oklch(0.55 0.008 70)",
+                        "warm-white": "oklch(0.96 0.012 80)",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer base {
+            * { border-color: theme('colors.border'); }
+            body {
+                @apply bg-background text-foreground font-sans antialiased;
+                -webkit-font-smoothing: antialiased;
+            }
+            ::selection { background: oklch(0.82 0.105 80 / 0.3); color: theme('colors.warm-white'); }
+        }
+
+        @layer utilities {
+            .glass {
+                background: linear-gradient(135deg, oklch(1 0 0 / 0.04), oklch(1 0 0 / 0.01));
+                backdrop-filter: blur(20px) saturate(140%);
+                -webkit-backdrop-filter: blur(20px) saturate(140%);
+                border: 1px solid oklch(1 0 0 / 0.08);
+            }
+            .glass-strong {
+                background: linear-gradient(135deg, oklch(1 0 0 / 0.08), oklch(1 0 0 / 0.02));
+                backdrop-filter: blur(28px) saturate(160%);
+                border: 1px solid oklch(1 0 0 / 0.12);
+            }
+            .grain::after {
+                content: "";
+                position: absolute; inset: 0;
+                pointer-events: none;
+                background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+                opacity: 0.09;
+                mix-blend-mode: overlay;
+                animation: grain-shift 1.6s steps(6) infinite;
+            }
+            @keyframes grain-shift {
+                0% { transform: translate(0,0); }
+                25% { transform: translate(-2%, 1%); }
+                50% { transform: translate(1%, -2%); }
+                75% { transform: translate(-1%, 2%); }
+                100% { transform: translate(0,0); }
+            }
+            .scanlines::before {
+                content: "";
+                position: absolute; inset: 0;
+                pointer-events: none;
+                background: repeating-linear-gradient(to bottom, transparent 0, transparent 2px, oklch(0 0 0 / 0.07) 3px, transparent 4px);
+                mix-blend-mode: multiply;
+                opacity: 0.45;
+            }
+            .vignette::before {
+                content: "";
+                position: absolute; inset: 0;
+                pointer-events: none;
+                background: radial-gradient(ellipse at center, transparent 40%, oklch(0 0 0 / 0.6) 100%);
+            }
+            .gold-text {
+                background: linear-gradient(180deg, oklch(0.92 0.06 85), oklch(0.7 0.1 70));
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+            }
+            .lens-flare {
+                position: absolute;
+                width: 80vmin; height: 80vmin;
+                pointer-events: none;
+                background: radial-gradient(circle, oklch(0.9 0.12 80 / 0.22) 0%, oklch(0.82 0.105 80 / 0.07) 28%, transparent 62%);
+                filter: blur(24px);
+                mix-blend-mode: screen;
+                transition: left 1.8s cubic-bezier(0.22,1,0.36,1), top 1.8s cubic-bezier(0.22,1,0.36,1);
+                transform: translate(-50%, -50%);
+                z-index: 5;
+            }
+            .marquee-track {
+                display: flex;
+                gap: 4rem;
+                animation: marquee 80s linear infinite;
+                width: max-content;
+            }
+            @keyframes marquee {
+                from { transform: translateX(0); }
+                to { transform: translateX(-50%); }
+            }
+            .reveal {
+                opacity: 0;
+                transform: translateY(30px);
+                filter: blur(8px);
+                transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+            }
+            .reveal.shown {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0);
+            }
+        }
+
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-float-slow { animation: float-slow 16s ease-in-out infinite; }
+        @keyframes float-slow {
+            0%, 100% { transform: translate3d(0,0,0) rotate(0deg); }
+            50% { transform: translate3d(0,-18px,0) rotate(0.5deg); }
+        }
+
+        .animate-breathe { animation: breathe 7s ease-in-out infinite; }
+        @keyframes breathe {
+            0%, 100% { opacity: 0.55; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.08); }
+        }
+
+        .animate-spin-slow { animation: spin-slow 80s linear infinite; }
+        @keyframes spin-slow { to { transform: rotate(360deg); } }
+
+        .animate-pulse-slow { animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+    </style>
 </head>
-<body>
+<body class="relative min-h-screen">
 
-<!-- ══════════ COVER ══════════ -->
-<div class="cover">
-  <div class="badge">Website Proposal · April 2026</div>
-  <div class="cover-brand">Zariya<br><em>Designer Wear</em></div>
-  <div class="cover-sub">A Digital Presence Worthy of Your Label</div>
-  <div class="cover-divider"></div>
-  <div class="cover-tagline">"Bringing the elegance of Zariya to every screen — beautifully, strategically, and completely."</div>
-  <div class="cover-meta">Prepared by Hitin Banga &nbsp;|&nbsp; +230 58451482</div>
-</div>
+    <!-- Loader -->
+    <div id="loader" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background transition-all duration-[1600ms] ease-[cubic-bezier(0.7,0,0.2,1)]">
+        <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(ellipse at center, oklch(0.82 0.105 80 / 0.08) 0%, transparent 60%);"></div>
+        <div class="font-display text-5xl tracking-tight" style="animation: fade-in 1.6s cubic-bezier(0.22,1,0.36,1) 0.2s forwards;">
+            Aether<span class="text-gold">.</span>
+        </div>
+        <div class="mt-12 h-px w-72 overflow-hidden bg-border" style="animation: fade-in 1.4s ease 0.6s forwards;">
+            <div id="loader-bar" class="h-full bg-gradient-to-r from-gold/40 via-gold to-gold/40 transition-all duration-200" style="width: 0%;"></div>
+        </div>
+        <div class="mt-5 font-mono text-[10px] tracking-[0.4em] uppercase text-muted-foreground" style="animation: fade-in 1.4s ease 0.8s forwards;">
+            Composing light · <span id="loader-pct">000</span>
+        </div>
+    </div>
 
-<!-- ══════════ INTRO ══════════ -->
-<section>
-  <div class="section-label">Introduction</div>
-  <h2>I Know <em>Zariya.</em><br>That's Why I'm Here.</h2>
-  <p>Having worked closely with the team at Zariya Designer Wear, I've seen firsthand the quality of the collections, the care in customer experience, and the passion behind the brand. From exquisite women's fancy Abayas to elegant men's Islamic wear — Zariya is not just clothing, it's a statement of faith, culture, and style, right here in Mauritius.</p>
-  <p>I also know that a website is currently in progress. But here's the truth: <strong>most websites built for fashion brands miss the mark.</strong> They're built by developers, not by people who understand how the brand feels, how customers shop, or what actually drives sales online.</p>
-  <div class="insight-box">"I'm not just a developer. I'm someone who understands Zariya — and I want to build a website that represents it the way it deserves."</div>
-  <p>This proposal outlines exactly what I'll deliver, how I'll do it, and why partnering with me is the smarter, faster, and more personal choice.</p>
-</section>
-<hr class="fancy">
+    <!-- Navigation -->
+    <header id="navbar" class="fixed inset-x-0 top-0 z-50 transition-all duration-700 py-6">
+        <div id="nav-container" class="mx-auto flex max-w-[1600px] items-center justify-between px-6 md:px-10 transition-all duration-700">
+            <a href="#top" class="flex items-center gap-2 group">
+                <span class="relative inline-block size-2 rounded-full bg-gold shadow-[0_0_20px_var(--gold)]"></span>
+                <span class="font-display text-lg tracking-tight">
+                    Aether<span class="text-gold">.</span>
+                </span>
+            </a>
+            <nav class="hidden md:flex items-center gap-9 text-[13px] tracking-[0.18em] uppercase text-muted-foreground">
+                <a href="#work" class="relative transition-colors hover:text-foreground after:absolute after:left-0 after:-bottom-1 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-gold after:transition-transform after:duration-500 hover:after:scale-x-100">Work</a>
+                <a href="#studio" class="relative transition-colors hover:text-foreground after:absolute after:left-0 after:-bottom-1 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-gold after:transition-transform after:duration-500 hover:after:scale-x-100">Studio</a>
+                <a href="#philosophy" class="relative transition-colors hover:text-foreground after:absolute after:left-0 after:-bottom-1 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-gold after:transition-transform after:duration-500 hover:after:scale-x-100">Philosophy</a>
+                <a href="#services" class="relative transition-colors hover:text-foreground after:absolute after:left-0 after:-bottom-1 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-gold after:transition-transform after:duration-500 hover:after:scale-x-100">Services</a>
+                <a href="#contact" class="relative transition-colors hover:text-foreground after:absolute after:left-0 after:-bottom-1 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-gold after:transition-transform after:duration-500 hover:after:scale-x-100">Contact</a>
+            </nav>
+            <a href="#contact" class="hidden md:inline-flex items-center gap-2 text-[12px] tracking-[0.2em] uppercase border border-border rounded-full px-4 py-2 hover:border-gold hover:text-gold transition-all duration-500">
+                Commission ↗
+            </a>
+        </div>
+    </header>
 
-<!-- ══════════ OPPORTUNITY ══════════ -->
-<section>
-  <div class="section-label">The Opportunity</div>
-  <h2>What a Great Website<br>Does for <em>You</em></h2>
-  <p>In today's market, your website is your most powerful salesperson. It works 24/7, reaches customers across Mauritius and internationally, and communicates your brand's premium value before a single word is spoken.</p>
-  <p>Right now, customers may be searching for Zariya online and finding nothing — or finding your social media alone, which isn't built to convert browsers into buyers. A polished, fast, and beautiful website changes all of that.</p>
-</section>
-<hr class="fancy">
+    <main>
+        <!-- Hero Section -->
+        <section id="top" class="relative isolate min-h-screen w-full overflow-hidden grain scanlines vignette">
+            <div id="hero-sky" class="absolute inset-0 -z-10" style="background: radial-gradient(ellipse at 50% 0%, oklch(0.22 0.02 70) 0%, oklch(0.14 0.005 60) 60%);"></div>
+            
+            <div id="hero-img-container" class="absolute inset-0 will-change-transform">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1920" alt="Architecture" class="h-full w-full object-cover" style="filter: contrast(1.08) saturate(1.05);">
+                <div class="absolute inset-0 bg-gradient-to-b from-background/30 via-background/10 to-background"></div>
+            </div>
 
-<!-- ══════════ FEATURES ══════════ -->
-<section>
-  <div class="section-label">What I'll Build</div>
-  <h2>A Complete <em>Digital Experience</em></h2>
-  <p>Every element crafted specifically for a designer clothing brand — not a generic template.</p>
-  <div class="features">
-    <div class="feature">
-      <div class="feature-num">01</div>
-      <div class="feature-title">Luxury Homepage</div>
-      <p class="feature-desc">A stunning first impression — full-screen visuals, elegant typography, and smooth animations that reflect the Zariya aesthetic.</p>
-    </div>
-    <div class="feature">
-      <div class="feature-num">02</div>
-      <div class="feature-title">Collections Gallery</div>
-      <p class="feature-desc">Beautiful lookbook-style pages for each collection — with filters, high-res image display, and category navigation.</p>
-    </div>
-    <div class="feature">
-      <div class="feature-num">03</div>
-      <div class="feature-title">Online Shop</div>
-      <p class="feature-desc">Full e-commerce with product listings, sizes, order placement, and easy WhatsApp or checkout integration.</p>
-    </div>
-    <div class="feature">
-      <div class="feature-num">04</div>
-      <div class="feature-title">Mobile-First Design</div>
-      <p class="feature-desc">Over 80% of fashion shoppers browse on phones. Your site will look and perform flawlessly on every device.</p>
-    </div>
-    <div class="feature">
-      <div class="feature-num">05</div>
-      <div class="feature-title">Brand Story Page</div>
-      <p class="feature-desc">About Us, the vision behind Zariya, the designers — told in a way that builds trust and emotional connection.</p>
-    </div>
-    <div class="feature">
-      <div class="feature-num">06</div>
-      <div class="feature-title">Contact & Booking</div>
-      <p class="feature-desc">Easy inquiry forms, WhatsApp chat button, store location, and custom order request flows.</p>
-    </div>
-  </div>
-</section>
-<hr class="fancy">
+            <div id="lens-flare" class="lens-flare"></div>
 
-<!-- ══════════ WHAT HAPPENS AFTER YOU SAY YES ══════════ -->
-<section>
-  <div class="section-label">After You Say Yes</div>
-  <h2>What Happens <em>Next</em></h2>
-  <p>The moment you decide to move forward, things start happening fast. Here's exactly what the first 48 hours look like — and beyond.</p>
+            <div id="hero-haze" class="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 will-change-transform" style="background: linear-gradient(to top, oklch(0.14 0.005 60) 10%, oklch(0.14 0.005 60 / 0.6) 50%, transparent 100%);"></div>
 
-  <div class="after-yes-grid">
-    <div class="ay-step">
-      <div class="ay-step-num">01</div>
-      <span class="ay-step-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m11 17 2 2 6-6"/><path d="m18 10 1-1a2 2 0 0 0 0-3l-4-4a2 2 0 0 0-3 0L9 5"/><path d="m2 12 5 5"/><path d="m5 11 4-4"/><path d="m8 8 5 5"/><path d="M13 13 8 8"/><path d="m16 16-5-5"/><path d="m19 19-5-5"/></svg>
-      </span>
-      <div class="ay-step-title">Agreement Signed</div>
-      <p class="ay-step-text">We sign a simple one-page agreement outlining the scope, timeline, and pricing. No legal jargon — just clarity.</p>
-    </div>
-    <div class="ay-step">
-      <div class="ay-step-num">02</div>
-      <span class="ay-step-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
-      </span>
-      <div class="ay-step-title">Initial Payment</div>
-      <p class="ay-step-text">50% advance to begin. Fully secured. You'll receive a receipt and official invoice on the same day.</p>
-    </div>
-    <div class="ay-step">
-      <div class="ay-step-num">03</div>
-      <span class="ay-step-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
-      </span>
-      <div class="ay-step-title">Brand Briefing</div>
-      <p class="ay-step-text">A focused session to gather your photos, fonts, colors, and any references you love. Takes 30–60 minutes.</p>
-    </div>
-    <div class="ay-step">
-      <div class="ay-step-num">04</div>
-      <span class="ay-step-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.92 0 1.7-.72 1.7-1.62 0-.39-.15-.74-.41-1.01-.26-.26-.41-.61-.41-1.01 0-.9 1.1-1.62 2.1-1.62H17c2.8 0 5-2.2 5-5 0-5.4-4.5-9.7-10-9.7z"/></svg>
-      </span>
-      <div class="ay-step-title">Design Concept</div>
-      <p class="ay-step-text">Within 3 days, you'll see the first visual concept for approval — before a single line of code is written.</p>
-    </div>
-    <div class="ay-step">
-      <div class="ay-step-num">05</div>
-      <span class="ay-step-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.71-2.13.09-2.91a2.18 2.18 0 0 0-3.09-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-5c1.62-2.2 5-3 5-3"/><path d="M12 15v5s3.03-.55 5-2c2.2-1.62 3-5 3-5"/></svg>
-      </span>
-      <div class="ay-step-title">Build & Launch</div>
-      <p class="ay-step-text">Development begins, with regular check-ins. You'll see the live site within 2 weeks — and we go live together.</p>
-    </div>
-  </div>
-</section>
-<hr class="fancy">
+            <div id="hero-spotlight" class="pointer-events-none absolute inset-0" style="background: radial-gradient(600px circle at 50% 50%, oklch(0.82 0.105 80 / 0.08), transparent 70%);"></div>
 
-<!-- ══════════ TIMELINE ══════════ -->
-<section>
-  <div class="section-label">Process</div>
-  <h2>How We'll Get <em>There</em></h2>
-  <div class="timeline">
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <div class="tl-phase">Week 1</div>
-      <div class="tl-title">Discovery & Design</div>
-      <p class="tl-desc">I gather brand assets, understand your vision, and present a design concept for your approval before building anything.</p>
-    </div>
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <div class="tl-phase">Week 1.5</div>
-      <div class="tl-title">Development</div>
-      <p class="tl-desc">Full website build — homepage, collections, shop, contact pages. Regular updates shared with you throughout.</p>
-    </div>
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <div class="tl-phase">Week 2</div>
-      <div class="tl-title">Review & Refinement</div>
-      <p class="tl-desc">You review everything. We refine, polish, and make sure every detail is perfect before going live.</p>
-    </div>
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <div class="tl-phase">Launch</div>
-      <div class="tl-title">Go Live + Handover</div>
-      <p class="tl-desc">Website launches. I provide full training so your team can manage products and content independently.</p>
-    </div>
-  </div>
-</section>
-<hr class="fancy">
+            <!-- Floating elements -->
+            <div class="pointer-events-none absolute inset-0">
+                <div class="absolute left-[8%] top-[28%] animate-float-slow">
+                    <div class="size-28 rounded-full border border-gold/20 backdrop-blur-sm animate-breathe"></div>
+                </div>
+                <div class="absolute right-[12%] top-[20%]">
+                    <div class="size-20 rotate-45 border border-warm-white/15"></div>
+                </div>
+                <div class="absolute right-[20%] bottom-[28%] animate-spin-slow">
+                    <div class="size-48 rounded-full border border-dashed border-gold/15"></div>
+                </div>
+                <div class="absolute left-[22%] bottom-[18%] animate-float-slow [animation-delay:-6s]">
+                    <div class="h-40 w-px bg-gradient-to-b from-transparent via-gold/40 to-transparent"></div>
+                </div>
+            </div>
 
-<!-- ══════════ PROJECT CHECKLIST ══════════ -->
-<section>
-  <div class="section-label">Project Checklist</div>
-  <h2>Everything <em>Included</em> — Nothing Hidden</h2>
-  <p>Every deliverable is tracked and handed over. This is your checklist — you'll see each item completed and signed off before launch.</p>
+            <div class="absolute inset-x-0 top-24 z-10 mx-auto flex max-w-[1600px] items-center justify-between px-6 md:px-10 text-[11px] tracking-[0.25em] uppercase text-muted-foreground">
+                <span class="font-mono">N 40°44′ · W 73°59′</span>
+                <span class="hidden md:block font-mono">Vol. XII — MMXXVI</span>
+                <span class="font-mono">22:14 GMT</span>
+            </div>
 
-  <div class="checklist-wrap">
-    <div class="cl-item">
-      <div class="cl-check done"><span class="inner">✓</span></div>
-      <div class="cl-body">
-        <div class="cl-title">Brand Discovery Session</div>
-        <p class="cl-desc">Understanding your aesthetic, target audience, and goals before any design begins.</p>
-      </div>
-      <div class="cl-tag">Week 1</div>
-    </div>
-    <div class="cl-item">
-      <div class="cl-check done"><span class="inner">✓</span></div>
-      <div class="cl-body">
-        <div class="cl-title">Design Concept Approval</div>
-        <p class="cl-desc">Visual mockup of the homepage presented before any code is written. Your approval required to proceed.</p>
-      </div>
-      <div class="cl-tag">Week 1</div>
-    </div>
-    <div class="cl-item">
-      <div class="cl-check empty"><span class="inner"></span></div>
-      <div class="cl-body">
-        <div class="cl-title">Luxury Homepage Built</div>
-        <p class="cl-desc">Full-screen hero, featured collections, brand statement, and smooth scroll animations.</p>
-      </div>
-      <div class="cl-tag">Week 2</div>
-    </div>
-    <div class="cl-item">
-      <div class="cl-check empty"><span class="inner"></span></div>
-      <div class="cl-body">
-        <div class="cl-title">Collections & Shop Pages</div>
-        <p class="cl-desc">Product listings with categories, filtering, and individual product detail views.</p>
-      </div>
-<div class="cl-tag">Week 1.5</div>
-</div>
-<div class="cl-item">
-<div class="cl-check empty"><span class="inner"></span></div>
-<div class="cl-body">
-<div class="cl-title">Mobile & SEO Setup</div>
-<p class="cl-desc">QA testing across all devices, plus speed and Google indexing configuration.</p>
-</div>
-<div class="cl-tag">Week 1.5</div>
-</div>
-<div class="cl-item">
-<div class="cl-check empty"><span class="inner"></span></div>
-<div class="cl-body">
-<div class="cl-title">Your Review & Final Revisions</div>
-<p class="cl-desc">You test everything on your own devices. All requested changes made before launch.</p>
-</div>
-<div class="cl-tag">Week 2</div>
-</div>
-    <div class="cl-item">
-      <div class="cl-check empty"><span class="inner"></span></div>
-      <div class="cl-body">
-        <div class="cl-title">Live Launch + Team Training</div>
-        <p class="cl-desc">Website goes live. Full walkthrough so your team can manage content independently.</p>
-      </div>
-      <div class="cl-tag">Launch</div>
-    </div>
-  </div>
-</section>
-<hr class="fancy">
+            <div class="relative z-10 mx-auto flex min-h-screen max-w-[1600px] flex-col justify-end px-6 pb-24 md:px-10 md:pb-32">
+                <p class="font-mono text-[11px] tracking-[0.4em] uppercase text-gold mb-8 opacity-0" style="animation: fade-in 2.2s cubic-bezier(0.22,1,0.36,1) 0.6s forwards;">
+                    — Architecture as Atmosphere
+                </p>
+                <h1 id="hero-headline" class="font-display text-balance text-[14vw] leading-[0.88] tracking-[-0.03em] md:text-[8.2vw] opacity-0" style="animation: fade-in 2.6s cubic-bezier(0.22,1,0.36,1) 0.9s forwards;">
+                    Spaces that <em class="not-italic gold-text">breathe</em><br> light into form.
+                </h1>
+                <div class="mt-12 grid gap-10 md:grid-cols-[1.2fr_1fr_auto] md:items-end opacity-0" style="animation: fade-in 2.4s cubic-bezier(0.22,1,0.36,1) 1.4s forwards;">
+                    <p class="max-w-md text-pretty text-base text-muted-foreground leading-relaxed">
+                        Aether is an architecture studio composing residences, cultural pavilions and civic landmarks across four continents — quiet structures shaped by climate, material and light.
+                    </p>
+                    <div class="flex items-center gap-4 text-[12px] tracking-[0.2em] uppercase">
+                        <span class="size-1.5 rounded-full bg-gold animate-pulse"></span>
+                        <span class="text-muted-foreground">Currently accepting 2026 commissions</span>
+                    </div>
+                    <a href="#work" class="group inline-flex items-center gap-3 self-start rounded-full border border-gold/40 bg-gold/5 px-7 py-4 text-[12px] tracking-[0.25em] uppercase text-gold transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-gold hover:text-background hover:border-gold">
+                        View Portfolio
+                        <span class="relative inline-block size-4 overflow-hidden">
+                            <span class="absolute inset-0 transition-transform duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-4">↗</span>
+                            <span class="absolute inset-0 -translate-x-4 transition-transform duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0">↗</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
 
-<!-- ══════════ PRICING ══════════ -->
-<section>
-  <div class="section-label">Investment</div>
-  <h2>Transparent <em>Pricing</em></h2>
-  <p>Choose the package that fits where Zariya is today — with room to grow.</p>
-  <div class="pricing-grid">
-    <div class="price-card">
-      <div class="price-tier">Starter</div>
-      <div class="price-amount"><span class="price-currency">Rs</span> 25K</div>
-      <div class="price-period">One-time</div>
-      <ul class="price-features">
-        <li>5-page informational website</li>
-        <li>Mobile responsive design</li>
-        <li>WhatsApp inquiry integration</li>
-        <li>Collections gallery</li>
-        <li>Contact page</li>
-        <li>1 month support</li>
-      </ul>
-    </div>
-    <div class="price-card featured">
-      <div class="price-tier">Professional</div>
-      <div class="price-amount"><span class="price-currency">Rs</span> 37K</div>
-      <div class="price-period">One-time</div>
-      <ul class="price-features">
-        <li>Full e-commerce store</li>
-        <li>Luxury custom design</li>
-        <li>Product management panel</li>
-        <li>Order & inquiry system</li>
-        <li>Instagram feed integration</li>
-        <li>SEO setup</li>
-        <li>3 months support</li>
-      </ul>
-    </div>
-    <div class="price-card">
-      <div class="price-tier">Premium</div>
-      <div class="price-amount"><span class="price-currency">Rs</span> 60K</div>
-      <div class="price-period">One-time</div>
-      <ul class="price-features">
-        <li>Everything in Professional</li>
-        <li>Custom animations & lookbook</li>
-        <li>Online payment integration</li>
-        <li>Customer accounts & wishlist</li>
-        <li>Email marketing setup</li>
-        <li>Analytics dashboard</li>
-        <li>6 months support</li>
-      </ul>
-    </div>
-  </div>
-  <p style="font-size:12px; color: #4a3828; text-align:center; margin-top: 16px;">All prices in Mauritian Rupees (MUR). Includes domain & hosting guidance. Prices negotiable for long-term partnership.</p>
-</section>
-<hr class="fancy">
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-3 text-[10px] tracking-[0.4em] uppercase text-muted-foreground">
+                <span>Scroll</span>
+                <span class="block h-12 w-px bg-gradient-to-b from-gold/60 to-transparent"></span>
+            </div>
+        </section>
 
-<!-- ══════════ PAYMENT TERMS ══════════ -->
-<section>
-  <div class="section-label">Payment Terms</div>
-  <h2>Simple, <em>Fair</em> Payment Structure</h2>
-  <p>Designed so you never pay everything upfront — and I never deliver without commitment on both sides.</p>
+        <!-- Studio Section -->
+        <section id="studio" class="relative py-32 md:py-44">
+            <div class="mx-auto max-w-[1600px] px-6 md:px-10">
+                <div class="reveal">
+                    <div class="flex items-center gap-4">
+                        <span class="font-mono text-[11px] tracking-[0.3em] uppercase text-gold">01</span>
+                        <div class="h-px w-8 bg-border"></div>
+                        <span class="font-mono text-[11px] tracking-[0.3em] uppercase text-muted-foreground">The Studio</span>
+                    </div>
+                </div>
+                <div class="mt-12 grid gap-16 md:grid-cols-12">
+                    <div class="md:col-span-7">
+                        <div class="reveal" style="transition-delay: 100ms;">
+                            <h2 class="font-display text-balance text-5xl leading-[1.02] tracking-tight md:text-7xl">
+                                A practice of <em class="not-italic gold-text">restraint</em>, composed at the threshold of mass and light.
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="md:col-span-5 md:col-start-8 flex flex-col gap-8">
+                        <div class="reveal" style="transition-delay: 200ms;">
+                            <p class="text-pretty text-muted-foreground leading-relaxed text-lg">
+                                Founded in 2009 between Tokyo and Copenhagen, Aether is led by twelve architects working at the intersection of phenomenology and digital craft. Every commission begins with a year of listening — to site, season and client — before the first line is drawn.
+                            </p>
+                        </div>
+                        <div class="reveal" style="transition-delay: 300ms;">
+                            <div class="grid grid-cols-3 gap-6 pt-8 border-t border-border">
+                                <div>
+                                    <div class="font-display text-4xl md:text-5xl gold-text">16</div>
+                                    <div class="mt-2 text-[11px] tracking-[0.2em] uppercase text-muted-foreground">Years in practice</div>
+                                </div>
+                                <div>
+                                    <div class="font-display text-4xl md:text-5xl gold-text">42</div>
+                                    <div class="mt-2 text-[11px] tracking-[0.2em] uppercase text-muted-foreground">Built works</div>
+                                </div>
+                                <div>
+                                    <div class="font-display text-4xl md:text-5xl gold-text">11</div>
+                                    <div class="mt-2 text-[11px] tracking-[0.2em] uppercase text-muted-foreground">Countries</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <div class="payment-row">
-    <div class="payment-card">
-      <div class="payment-pct">50<span>%</span></div>
-      <div class="payment-label">To Begin</div>
-      <p class="payment-desc">Paid upfront to confirm the project and reserve your slot. Design work starts immediately after receipt.</p>
-    </div>
-    <div class="payment-card" style="border-color: var(--gold);">
-      <div class="payment-pct" style="color: var(--gold-light);">25<span>%</span></div>
-      <div class="payment-label">At Midpoint</div>
-      <p class="payment-desc">Due when the design concept is approved and development is underway. Marks the halfway milestone.</p>
-    </div>
-    <div class="payment-card">
-      <div class="payment-pct">25<span>%</span></div>
-      <div class="payment-label">On Launch</div>
-      <p class="payment-desc">Final payment when the website goes live and you're fully satisfied. Not before — guaranteed.</p>
-    </div>
-  </div>
+        <!-- Projects Section -->
+        <section id="work" class="relative py-32 md:py-44">
+            <div class="mx-auto max-w-[1600px] px-6 md:px-10">
+                <div class="reveal">
+                    <div class="flex items-end justify-between gap-8 flex-wrap">
+                        <div>
+                            <div class="flex items-center gap-4">
+                                <span class="font-mono text-[11px] tracking-[0.3em] uppercase text-gold">02</span>
+                                <div class="h-px w-8 bg-border"></div>
+                                <span class="font-mono text-[11px] tracking-[0.3em] uppercase text-muted-foreground">Featured Work</span>
+                            </div>
+                            <h2 class="mt-8 font-display text-balance text-5xl md:text-7xl leading-[1.02] tracking-tight max-w-3xl">
+                                Selected works,<br> 2023 — present.
+                            </h2>
+                        </div>
+                        <a href="#" class="text-[12px] tracking-[0.25em] uppercase text-muted-foreground hover:text-gold transition-colors">
+                            All 42 projects →
+                        </a>
+                    </div>
+                </div>
 
-  <div class="payment-note">
-    <strong>Accepted:</strong> Bank transfer, mobile money, or cash. A formal receipt is issued for every payment. If you prefer a different split, I'm open to discussing — just ask.
-  </div>
-</section>
-<hr class="fancy">
+                <div class="mt-20 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 md:auto-rows-[34vh]">
+                    <!-- Project 1 -->
+                    <div class="reveal md:col-span-7 md:row-span-2">
+                        <a href="#" class="tilt-card group relative block h-full min-h-[60vh] md:min-h-0 overflow-hidden rounded-sm border border-border" style="box-shadow: 0 30px 80px -30px oklch(0 0 0 / 0.7), 0 10px 30px -15px oklch(0.82 0.105 80 / 0.15);">
+                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200" alt="Marin Pavilion" class="absolute inset-0 h-full w-full object-cover transition-transform duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110">
+                            <div class="card-sheen pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-1000 group-hover:opacity-100" style="mix-blend-mode: screen;"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent opacity-95 transition-opacity duration-[1200ms] group-hover:opacity-75"></div>
+                            <div class="absolute inset-x-0 top-0 flex items-start justify-between p-6 md:p-8">
+                                <span class="font-mono text-[11px] tracking-[0.3em] uppercase text-warm-white/70">/01</span>
+                                <span class="glass rounded-full px-3 py-1 text-[10px] tracking-[0.2em] uppercase text-warm-white/80">Cultural</span>
+                            </div>
+                            <div class="absolute inset-x-0 bottom-0 p-6 md:p-10">
+                                <div class="flex items-end justify-between gap-6">
+                                    <div class="transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1">
+                                        <h3 class="font-display text-3xl md:text-5xl tracking-tight">Marin Pavilion</h3>
+                                        <p class="mt-2 text-sm text-muted-foreground">Big Sur, California · <span class="font-mono">2025</span></p>
+                                    </div>
+                                    <span class="hidden md:inline-flex size-12 items-center justify-center rounded-full border border-gold/40 text-gold transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:bg-gold group-hover:text-background group-hover:scale-110 group-hover:rotate-45">↗</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="reveal md:col-span-5" style="transition-delay: 160ms;">
+                        <a href="#" class="tilt-card group relative block h-full min-h-[40vh] md:min-h-0 overflow-hidden rounded-sm border border-border" style="box-shadow: 0 30px 80px -30px oklch(0 0 0 / 0.7), 0 10px 30px -15px oklch(0.82 0.105 80 / 0.15);">
+                            <img src="https://images.unsplash.com/photo-1449156059586-7790aed74471?auto=format&fit=crop&q=80&w=800" alt="Helix Tower" class="absolute inset-0 h-full w-full object-cover transition-transform duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110">
+                            <div class="card-sheen pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-1000 group-hover:opacity-100" style="mix-blend-mode: screen;"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent opacity-95 transition-opacity duration-[1200ms] group-hover:opacity-75"></div>
+                            <div class="absolute inset-x-0 top-0 flex items-start justify-between p-6 md:p-8">
+                                <span class="font-mono text-[11px] tracking-[0.3em] uppercase text-warm-white/70">/02</span>
+                                <span class="glass rounded-full px-3 py-1 text-[10px] tracking-[0.2em] uppercase text-warm-white/80">Residential</span>
+                            </div>
+                            <div class="absolute inset-x-0 bottom-0 p-6 md:p-10">
+                                <div class="flex items-end justify-between gap-6">
+                                    <div class="transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1">
+                                        <h3 class="font-display text-2xl md:text-3xl tracking-tight">Helix Tower</h3>
+                                        <p class="mt-2 text-sm text-muted-foreground">Osaka, Japan · <span class="font-mono">2024</span></p>
+                                    </div>
+                                    <span class="hidden md:inline-flex size-10 items-center justify-center rounded-full border border-gold/40 text-gold transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:bg-gold group-hover:text-background group-hover:scale-110 group-hover:rotate-45">↗</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="reveal md:col-span-5" style="transition-delay: 320ms;">
+                        <a href="#" class="tilt-card group relative block h-full min-h-[40vh] md:min-h-0 overflow-hidden rounded-sm border border-border" style="box-shadow: 0 30px 80px -30px oklch(0 0 0 / 0.7), 0 10px 30px -15px oklch(0.82 0.105 80 / 0.15);">
+                            <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80&w=800" alt="Vault Gallery" class="absolute inset-0 h-full w-full object-cover transition-transform duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110">
+                            <div class="card-sheen pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-1000 group-hover:opacity-100" style="mix-blend-mode: screen;"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent opacity-95 transition-opacity duration-[1200ms] group-hover:opacity-75"></div>
+                            <div class="absolute inset-x-0 top-0 flex items-start justify-between p-6 md:p-8">
+                                <span class="font-mono text-[11px] tracking-[0.3em] uppercase text-warm-white/70">/03</span>
+                                <span class="glass rounded-full px-3 py-1 text-[10px] tracking-[0.2em] uppercase text-warm-white/80">Civic</span>
+                            </div>
+                            <div class="absolute inset-x-0 bottom-0 p-6 md:p-10">
+                                <div class="flex items-end justify-between gap-6">
+                                    <div class="transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1">
+                                        <h3 class="font-display text-2xl md:text-3xl tracking-tight">Vault Gallery</h3>
+                                        <p class="mt-2 text-sm text-muted-foreground">Porto, Portugal · <span class="font-mono">2024</span></p>
+                                    </div>
+                                    <span class="hidden md:inline-flex size-10 items-center justify-center rounded-full border border-gold/40 text-gold transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:bg-gold group-hover:text-background group-hover:scale-110 group-hover:rotate-45">↗</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<!-- ══════════ GUARANTEE ══════════ -->
-<section>
-  <div class="section-label">Our Guarantee</div>
-  <h2>You Are <em>Protected</em></h2>
+        <!-- Walkthrough Section -->
+        <section id="walkthrough" class="relative py-32 md:py-44 overflow-hidden">
+            <div class="mx-auto max-w-[1600px] px-6 md:px-10">
+                <div class="reveal">
+                    <div class="flex items-center gap-4">
+                        <span class="font-mono text-[11px] tracking-[0.3em] uppercase text-gold">03</span>
+                        <div class="h-px w-8 bg-border"></div>
+                        <span class="font-mono text-[11px] tracking-[0.3em] uppercase text-muted-foreground">3D Walkthrough</span>
+                    </div>
+                </div>
+                <div class="mt-12 grid gap-10 md:grid-cols-12 items-center">
+                    <div class="md:col-span-5">
+                        <div class="reveal" style="transition-delay: 100ms;">
+                            <h2 class="font-display text-balance text-5xl md:text-6xl leading-[1.02] tracking-tight">
+                                Step inside, <em class="not-italic gold-text">before it's built.</em>
+                            </h2>
+                        </div>
+                        <div class="reveal" style="transition-delay: 200ms;">
+                            <p class="mt-8 text-muted-foreground text-lg leading-relaxed">
+                                Every Aether commission is delivered with a fully navigable 3D environment. Walk corridors, watch light fall across surfaces through the seasons, and refine each decision in real time alongside our team.
+                            </p>
+                        </div>
+                        <div class="reveal" style="transition-delay: 300ms;">
+                            <div class="mt-10 flex flex-wrap gap-3">
+                                <span class="glass rounded-full px-4 py-2 text-[11px] tracking-[0.15em] uppercase text-muted-foreground">Realtime ray-tracing</span>
+                                <span class="glass rounded-full px-4 py-2 text-[11px] tracking-[0.15em] uppercase text-muted-foreground">VR-ready</span>
+                                <span class="glass rounded-full px-4 py-2 text-[11px] tracking-[0.15em] uppercase text-muted-foreground">Daylight simulation</span>
+                                <span class="glass rounded-full px-4 py-2 text-[11px] tracking-[0.15em] uppercase text-muted-foreground">Acoustic mapping</span>
+                            </div>
+                        </div>
+                    </div>
 
-  <div class="guarantee-box">
-    <div class="guarantee-seal">
-      <span class="guarantee-seal-icon">⬡</span>
-    </div>
-    <div class="guarantee-title">The <em>Zariya Promise</em></div>
-    <p class="guarantee-text">
-      I don't consider this project done until you are genuinely proud of what we've built together. If something isn't right, we fix it — no questions asked, no extra charges. Your satisfaction is built into every step of the process.
-    </p>
-    <div class="guarantee-pills">
-      <div class="g-pill">Unlimited Revisions During Review</div>
-      <div class="g-pill">No Hidden Fees — Ever</div>
-      <div class="g-pill">Final Payment Only After Approval</div>
-      <div class="g-pill">30-Day Post-Launch Bug Support</div>
-      <div class="g-pill">Full Ownership Handed to You</div>
-      <div class="g-pill">Training Included at No Extra Cost</div>
-    </div>
-  </div>
-</section>
-<hr class="fancy">
+                    <div class="md:col-span-7 relative">
+                        <div class="reveal" style="transition-delay: 150ms;">
+                            <div class="relative aspect-[4/3] overflow-hidden rounded-sm border border-border" style="box-shadow: 0 30px 80px -30px oklch(0 0 0 / 0.7), 0 10px 30px -15px oklch(0.82 0.105 80 / 0.15), 0 0 60px oklch(0.82 0.105 80 / 0.25);">
+                                <img id="walkthrough-img" src="https://images.unsplash.com/photo-1503387762-592dee58c460?auto=format&fit=crop&q=80&w=1200" alt="3D Model" class="absolute inset-0 h-full w-full object-cover will-change-transform" style="filter: contrast(1.1) saturate(1.1);">
+                                <div id="walkthrough-light" class="pointer-events-none absolute inset-0" style="mix-blend-mode: screen; transition: background 800ms linear;"></div>
+                                <div class="absolute inset-0 bg-gradient-to-br from-background/40 via-transparent to-background/60"></div>
+                                
+                                <div class="absolute inset-0 p-6 md:p-8 flex flex-col justify-between font-mono text-[10px] tracking-[0.2em] uppercase text-gold/80">
+                                    <div class="flex justify-between">
+                                        <span>CAM_03 · ORBIT</span>
+                                        <span class="flex items-center gap-2">
+                                            <span class="size-1.5 rounded-full bg-gold animate-pulse"></span> REC
+                                        </span>
+                                    </div>
+                                    <div class="flex justify-between items-end">
+                                        <div class="space-y-1">
+                                            <div>X <span id="hud-x">0</span></div>
+                                            <div>Y <span id="hud-y">0</span></div>
+                                            <div>Z <span id="hud-z">102.0</span></div>
+                                        </div>
+                                        <div class="glass rounded-full px-4 py-2 text-warm-white">
+                                            Scroll to navigate
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="absolute top-4 left-4 size-5 border-l border-t border-gold/50"></span>
+                                <span class="absolute top-4 right-4 size-5 border-r border-t border-gold/50"></span>
+                                <span class="absolute bottom-4 left-4 size-5 border-l border-b border-gold/50"></span>
+                                <span class="absolute bottom-4 right-4 size-5 border-r border-b border-gold/50"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<!-- ══════════ WHY ME ══════════ -->
-<section>
-  <div class="section-label">Why Choose Me</div>
-  <h2>The <em>Advantage</em> of Choosing Someone<br>Who Already Understands You</h2>
-  <div class="why-grid">
-    <div class="why-item">
-      <div class="why-item-title">I Know the Brand</div>
-      <p class="why-item-text">I've worked with Zariya. I understand the clientele, the aesthetic, and what matters to your customers — no onboarding gap.</p>
-    </div>
-    <div class="why-item">
-      <div class="why-item-title">Fashion-Focused</div>
-      <p class="why-item-text">I'm not building a generic business site. Every decision — fonts, colors, layout — will be made with a designer wear brand in mind.</p>
-    </div>
-    <div class="why-item">
-      <div class="why-item-title">Direct Communication</div>
-      <p class="why-item-text">No middlemen, no agency delays. You talk to me directly and I deliver — fast revisions, real accountability.</p>
-    </div>
-    <div class="why-item">
-      <div class="why-item-title">Long-Term Partner</div>
-      <p class="why-item-text">After launch, I stay available. New collections, seasonal updates, promotions — I grow with your brand.</p>
-    </div>
-  </div>
-</section>
-<hr class="fancy">
+        <!-- Philosophy Section -->
+        <section id="philosophy" class="relative py-40 md:py-56 overflow-hidden">
+            <div id="philosophy-bg" class="absolute inset-0 -z-10 will-change-transform">
+                <img src="https://images.unsplash.com/photo-1518005020251-58296b974910?auto=format&fit=crop&q=80&w=1920" alt="" class="h-[130%] w-full object-cover opacity-30">
+                <div class="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background"></div>
+            </div>
 
-<!-- ══════════ FAQ ══════════ -->
-<section>
-  <div class="section-label">FAQ</div>
-  <h2>Questions You're<br>Probably <em>Thinking</em></h2>
-  <p>Honest answers to everything you'd want to know before saying yes.</p>
+            <div class="mx-auto max-w-[1600px] px-6 md:px-10">
+                <div class="reveal">
+                    <div class="flex items-center gap-4">
+                        <span class="font-mono text-[11px] tracking-[0.3em] uppercase text-gold">04</span>
+                        <div class="h-px w-8 bg-border"></div>
+                        <span class="font-mono text-[11px] tracking-[0.3em] uppercase text-muted-foreground">Philosophy</span>
+                    </div>
+                </div>
+                <div class="reveal" style="transition-delay: 100ms;">
+                    <blockquote class="mt-16 max-w-5xl">
+                        <p class="font-display text-balance text-4xl md:text-6xl leading-[1.05] tracking-tight">
+                            <span class="text-muted-foreground">"</span>We do not build buildings. We <em class="not-italic gold-text">choreograph</em> the way light, weight and breath meet inside a room.<span class="text-muted-foreground">"</span>
+                        </p>
+                        <footer class="mt-8 font-mono text-[11px] tracking-[0.3em] uppercase text-muted-foreground">
+                            — Sora Inoue, Founding Partner
+                        </footer>
+                    </blockquote>
+                </div>
 
-  <div class="faq-list">
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        How long will the website actually take?
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-a">
-        For most packages, the full website is ready within 2 weeks. The timeline depends on how quickly we receive brand assets (photos, logos, content) from your side. The faster we get materials, the faster we deliver. I'll always give you a realistic date — not an optimistic one.
-      </div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        What if I don't have professional photos yet?
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-a">
-        No problem. We can use high-quality placeholder imagery during development and swap in your real photos when they're ready. I can also recommend a local photographer in Mauritius who specialises in fashion and product shoots if needed.
-      </div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        Can I update the website myself after it's built?
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-a">
-        Yes — 100%. I'll build with a user-friendly content management system and provide full training so your team can add products, update prices, and manage content independently. You'll never be dependent on me for day-to-day changes.
-      </div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        What about hosting and domain? Are those included?
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-a">
-        Domain and hosting are not included in the package price, but I'll guide you through choosing and setting them up — it's typically Rs 3,000–6,000/year depending on your needs. I'll handle the technical setup so you don't have to worry about anything.
-      </div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        What if I already have a website being built elsewhere?
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-a">
-        I understand — and I'm not here to pressure you. But I'd encourage you to compare: are they building something specifically for a fashion brand, or a generic site? If you'd like a second opinion on what you've been shown so far, I'm happy to review it and give you an honest assessment. No cost.
-      </div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        How many revisions do I get?
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-a">
-        During the dedicated review week (Week 4), revisions are unlimited. You can request as many changes as needed — colour tweaks, text edits, layout adjustments — until you're fully satisfied. After launch, minor changes are covered for 30 days at no charge.
-      </div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        What if I want to add features later — like a loyalty programme or blog?
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-a">
-        The website is built to grow. Adding new features, pages, or integrations after launch is straightforward and will be quoted separately at a fair rate. Many of my clients start with the Professional package and expand once they see results.
-      </div>
-    </div>
-  </div>
-</section>
-<hr class="fancy">
+                <div class="mt-24 grid gap-px md:grid-cols-4 bg-border">
+                    <div class="reveal bg-background p-8 md:p-10">
+                        <div class="font-mono text-[11px] tracking-[0.3em] uppercase text-gold">I</div>
+                        <h3 class="mt-6 font-display text-2xl md:text-3xl">Material truth</h3>
+                        <p class="mt-4 text-sm text-muted-foreground leading-relaxed">Concrete, brass, stone — left to speak in their own register.</p>
+                    </div>
+                    <div class="reveal bg-background p-8 md:p-10" style="transition-delay: 100ms;">
+                        <div class="font-mono text-[11px] tracking-[0.3em] uppercase text-gold">II</div>
+                        <h3 class="mt-6 font-display text-2xl md:text-3xl">Light as program</h3>
+                        <p class="mt-4 text-sm text-muted-foreground leading-relaxed">We design for the sun first; the brief comes second.</p>
+                    </div>
+                    <div class="reveal bg-background p-8 md:p-10" style="transition-delay: 200ms;">
+                        <div class="font-mono text-[11px] tracking-[0.3em] uppercase text-gold">III</div>
+                        <h3 class="mt-6 font-display text-2xl md:text-3xl">Quiet surfaces</h3>
+                        <p class="mt-4 text-sm text-muted-foreground leading-relaxed">Detail withdrawn until only proportion remains.</p>
+                    </div>
+                    <div class="reveal bg-background p-8 md:p-10" style="transition-delay: 300ms;">
+                        <div class="font-mono text-[11px] tracking-[0.3em] uppercase text-gold">IV</div>
+                        <h3 class="mt-6 font-display text-2xl md:text-3xl">Climate intelligence</h3>
+                        <p class="mt-4 text-sm text-muted-foreground leading-relaxed">Every wall is a thermodynamic instrument.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<!-- ══════════ CTA ══════════ -->
-<div class="cta-section">
-  <div class="section-label" style="justify-content:center;">Next Step</div>
-  <h2>Let's Build Something<br><em>Extraordinary</em></h2>
-  <p style="max-width:480px; margin: 0 auto;">I'd love to sit down with you, show you some design concepts, and talk through what the ideal website for Zariya looks like. No commitment — just a conversation.</p>
+        <!-- Services Section -->
+        <section id="services" class="relative py-32 md:py-44">
+            <div class="mx-auto max-w-[1600px] px-6 md:px-10">
+                <div class="reveal">
+                    <div class="flex items-center gap-4">
+                        <span class="font-mono text-[11px] tracking-[0.3em] uppercase text-gold">05</span>
+                        <div class="h-px w-8 bg-border"></div>
+                        <span class="font-mono text-[11px] tracking-[0.3em] uppercase text-muted-foreground">Services</span>
+                    </div>
+                </div>
+                <div class="reveal" style="transition-delay: 100ms;">
+                    <h2 class="mt-8 font-display text-5xl md:text-7xl tracking-tight max-w-3xl leading-[1.02]">
+                        Six disciplines,<br> one continuous hand.
+                    </h2>
+                </div>
 
-  <ul class="contact-list">
-    <li><strong>Name:</strong> Hitin Banga</li>
-    <li><strong>Phone / WhatsApp:</strong> +230 58451482</li>
-    <li><strong>Email:</strong> hitin.banga23@gmail.com</li>
-  </ul>
+                <div class="mt-20 border-t border-border">
+                    <div class="reveal">
+                        <a href="#contact" class="group relative grid grid-cols-12 items-center gap-6 border-b border-border py-8 md:py-10 transition-colors hover:bg-card/40">
+                            <span class="col-span-2 md:col-span-1 font-mono text-[11px] tracking-[0.3em] uppercase text-gold">01</span>
+                            <h3 class="col-span-10 md:col-span-4 font-display text-2xl md:text-4xl tracking-tight transition-transform duration-500 group-hover:translate-x-3">Architecture</h3>
+                            <p class="col-span-10 col-start-3 md:col-span-6 md:col-start-auto text-muted-foreground text-sm md:text-base">Residential, cultural and civic typologies from concept to completion.</p>
+                            <span class="hidden md:flex col-span-1 justify-end text-gold opacity-0 -translate-x-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">↗</span>
+                        </a>
+                    </div>
+                    <div class="reveal" style="transition-delay: 60ms;">
+                        <a href="#contact" class="group relative grid grid-cols-12 items-center gap-6 border-b border-border py-8 md:py-10 transition-colors hover:bg-card/40">
+                            <span class="col-span-2 md:col-span-1 font-mono text-[11px] tracking-[0.3em] uppercase text-gold">02</span>
+                            <h3 class="col-span-10 md:col-span-4 font-display text-2xl md:text-4xl tracking-tight transition-transform duration-500 group-hover:translate-x-3">Interior Architecture</h3>
+                            <p class="col-span-10 col-start-3 md:col-span-6 md:col-start-auto text-muted-foreground text-sm md:text-base">Bespoke joinery, lighting and material curation for every room.</p>
+                            <span class="hidden md:flex col-span-1 justify-end text-gold opacity-0 -translate-x-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">↗</span>
+                        </a>
+                    </div>
+                    <div class="reveal" style="transition-delay: 120ms;">
+                        <a href="#contact" class="group relative grid grid-cols-12 items-center gap-6 border-b border-border py-8 md:py-10 transition-colors hover:bg-card/40">
+                            <span class="col-span-2 md:col-span-1 font-mono text-[11px] tracking-[0.3em] uppercase text-gold">03</span>
+                            <h3 class="col-span-10 md:col-span-4 font-display text-2xl md:text-4xl tracking-tight transition-transform duration-500 group-hover:translate-x-3">Urban Strategy</h3>
+                            <p class="col-span-10 col-start-3 md:col-span-6 md:col-start-auto text-muted-foreground text-sm md:text-base">Masterplans, public space and adaptive reuse of historic fabric.</p>
+                            <span class="hidden md:flex col-span-1 justify-end text-gold opacity-0 -translate-x-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">↗</span>
+                        </a>
+                    </div>
+                    <div class="reveal" style="transition-delay: 180ms;">
+                        <a href="#contact" class="group relative grid grid-cols-12 items-center gap-6 border-b border-border py-8 md:py-10 transition-colors hover:bg-card/40">
+                            <span class="col-span-2 md:col-span-1 font-mono text-[11px] tracking-[0.3em] uppercase text-gold">04</span>
+                            <h3 class="col-span-10 md:col-span-4 font-display text-2xl md:text-4xl tracking-tight transition-transform duration-500 group-hover:translate-x-3">Computational Design</h3>
+                            <p class="col-span-10 col-start-3 md:col-span-6 md:col-start-auto text-muted-foreground text-sm md:text-base">Parametric form-finding, daylight and structural optimisation.</p>
+                            <span class="hidden md:flex col-span-1 justify-end text-gold opacity-0 -translate-x-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">↗</span>
+                        </a>
+                    </div>
+                    <div class="reveal" style="transition-delay: 240ms;">
+                        <a href="#contact" class="group relative grid grid-cols-12 items-center gap-6 border-b border-border py-8 md:py-10 transition-colors hover:bg-card/40">
+                            <span class="col-span-2 md:col-span-1 font-mono text-[11px] tracking-[0.3em] uppercase text-gold">05</span>
+                            <h3 class="col-span-10 md:col-span-4 font-display text-2xl md:text-4xl tracking-tight transition-transform duration-500 group-hover:translate-x-3">Brand & Wayfinding</h3>
+                            <p class="col-span-10 col-start-3 md:col-span-6 md:col-start-auto text-muted-foreground text-sm md:text-base">Identity systems that extend the architecture beyond its walls.</p>
+                            <span class="hidden md:flex col-span-1 justify-end text-gold opacity-0 -translate-x-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">↗</span>
+                        </a>
+                    </div>
+                    <div class="reveal" style="transition-delay: 300ms;">
+                        <a href="#contact" class="group relative grid grid-cols-12 items-center gap-6 border-b border-border py-8 md:py-10 transition-colors hover:bg-card/40">
+                            <span class="col-span-2 md:col-span-1 font-mono text-[11px] tracking-[0.3em] uppercase text-gold">06</span>
+                            <h3 class="col-span-10 md:col-span-4 font-display text-2xl md:text-4xl tracking-tight transition-transform duration-500 group-hover:translate-x-3">Furniture</h3>
+                            <p class="col-span-10 col-start-3 md:col-span-6 md:col-start-auto text-muted-foreground text-sm md:text-base">Limited-edition pieces produced with European artisans.</p>
+                            <span class="hidden md:flex col-span-1 justify-end text-gold opacity-0 -translate-x-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">↗</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <div class="sign-off">"Zariya deserves a digital home as beautiful as the pieces it creates."</div>
-</div>
+        <!-- Awards Section -->
+        <section class="relative py-32 md:py-44">
+            <div class="mx-auto max-w-[1600px] px-6 md:px-10">
+                <div class="reveal">
+                    <div class="flex items-center gap-4">
+                        <span class="font-mono text-[11px] tracking-[0.3em] uppercase text-gold">06</span>
+                        <div class="h-px w-8 bg-border"></div>
+                        <span class="font-mono text-[11px] tracking-[0.3em] uppercase text-muted-foreground">Recognition</span>
+                    </div>
+                </div>
+                <div class="mt-12 grid gap-16 md:grid-cols-12">
+                    <div class="md:col-span-5">
+                        <div class="reveal" style="transition-delay: 100ms;">
+                            <h2 class="font-display text-5xl md:text-6xl leading-[1.02] tracking-tight">
+                                Honoured by <em class="not-italic gold-text">institutions</em> we admire.
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="md:col-span-7">
+                        <div class="reveal" style="transition-delay: 150ms;">
+                            <ul class="divide-y divide-border border-y border-border">
+                                <li class="grid grid-cols-12 items-baseline gap-4 py-5">
+                                    <span class="col-span-2 font-mono text-sm text-muted-foreground">2025</span>
+                                    <span class="col-span-5 font-display text-lg md:text-2xl">Pritzker</span>
+                                    <span class="col-span-5 text-right text-sm text-muted-foreground">Nominee</span>
+                                </li>
+                                <li class="grid grid-cols-12 items-baseline gap-4 py-5">
+                                    <span class="col-span-2 font-mono text-sm text-muted-foreground">2025</span>
+                                    <span class="col-span-5 font-display text-lg md:text-2xl">Mies van der Rohe</span>
+                                    <span class="col-span-5 text-right text-sm text-muted-foreground">Winner — Marin Pavilion</span>
+                                </li>
+                                <li class="grid grid-cols-12 items-baseline gap-4 py-5">
+                                    <span class="col-span-2 font-mono text-sm text-muted-foreground">2024</span>
+                                    <span class="col-span-5 font-display text-lg md:text-2xl">RIBA International</span>
+                                    <span class="col-span-5 text-right text-sm text-muted-foreground">Winner — Helix Tower</span>
+                                </li>
+                                <li class="grid grid-cols-12 items-baseline gap-4 py-5">
+                                    <span class="col-span-2 font-mono text-sm text-muted-foreground">2024</span>
+                                    <span class="col-span-5 font-display text-lg md:text-2xl">Wallpaper* Design</span>
+                                    <span class="col-span-5 text-right text-sm text-muted-foreground">Architect of the Year</span>
+                                </li>
+                                <li class="grid grid-cols-12 items-baseline gap-4 py-5">
+                                    <span class="col-span-2 font-mono text-sm text-muted-foreground">2024</span>
+                                    <span class="col-span-5 font-display text-lg md:text-2xl">AR Emerging</span>
+                                    <span class="col-span-5 text-right text-sm text-muted-foreground">Honour Award</span>
+                                </li>
+                                <li class="grid grid-cols-12 items-baseline gap-4 py-5">
+                                    <span class="col-span-2 font-mono text-sm text-muted-foreground">2023</span>
+                                    <span class="col-span-5 font-display text-lg md:text-2xl">Dezeen Awards</span>
+                                    <span class="col-span-5 text-right text-sm text-muted-foreground">Cultural Building of the Year</span>
+                                </li>
+                                <li class="grid grid-cols-12 items-baseline gap-4 py-5">
+                                    <span class="col-span-2 font-mono text-sm text-muted-foreground">2023</span>
+                                    <span class="col-span-5 font-display text-lg md:text-2xl">AIA Honor</span>
+                                    <span class="col-span-5 text-right text-sm text-muted-foreground">Vault Gallery</span>
+                                </li>
+                                <li class="grid grid-cols-12 items-baseline gap-4 py-5">
+                                    <span class="col-span-2 font-mono text-sm text-muted-foreground">2022</span>
+                                    <span class="col-span-5 font-display text-lg md:text-2xl">World Architecture Festival</span>
+                                    <span class="col-span-5 text-right text-sm text-muted-foreground">Best in Show</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-<footer>
-  ZARIYA DESIGNER WEAR &nbsp;·&nbsp; WEBSITE PROPOSAL &nbsp;·&nbsp; 2026
-</footer>
+            <!-- Press Marquee -->
+            <div class="mt-24 overflow-hidden border-y border-border py-8">
+                <div class="marquee-track font-display text-3xl md:text-5xl text-muted-foreground/60">
+                    <span class="flex items-center gap-16 whitespace-nowrap">Architectural Record <span class="size-1.5 rounded-full bg-gold"></span></span>
+                    <span class="flex items-center gap-16 whitespace-nowrap">Domus <span class="size-1.5 rounded-full bg-gold"></span></span>
+                    <span class="flex items-center gap-16 whitespace-nowrap">Wallpaper* <span class="size-1.5 rounded-full bg-gold"></span></span>
+                    <span class="flex items-center gap-16 whitespace-nowrap">Dezeen <span class="size-1.5 rounded-full bg-gold"></span></span>
+                    <span class="flex items-center gap-16 whitespace-nowrap">The New York Times <span class="size-1.5 rounded-full bg-gold"></span></span>
+                    <span class="flex items-center gap-16 whitespace-nowrap">Monocle <span class="size-1.5 rounded-full bg-gold"></span></span>
+                    <span class="flex items-center gap-16 whitespace-nowrap">Casa Brutus <span class="size-1.5 rounded-full bg-gold"></span></span>
+                    <span class="flex items-center gap-16 whitespace-nowrap">El Croquis <span class="size-1.5 rounded-full bg-gold"></span></span>
+                    <!-- Repeat for seamless loop -->
+                    <span class="flex items-center gap-16 whitespace-nowrap">Architectural Record <span class="size-1.5 rounded-full bg-gold"></span></span>
+                    <span class="flex items-center gap-16 whitespace-nowrap">Domus <span class="size-1.5 rounded-full bg-gold"></span></span>
+                    <span class="flex items-center gap-16 whitespace-nowrap">Wallpaper* <span class="size-1.5 rounded-full bg-gold"></span></span>
+                    <span class="flex items-center gap-16 whitespace-nowrap">Dezeen <span class="size-1.5 rounded-full bg-gold"></span></span>
+                    <span class="flex items-center gap-16 whitespace-nowrap">The New York Times <span class="size-1.5 rounded-full bg-gold"></span></span>
+                    <span class="flex items-center gap-16 whitespace-nowrap">Monocle <span class="size-1.5 rounded-full bg-gold"></span></span>
+                    <span class="flex items-center gap-16 whitespace-nowrap">Casa Brutus <span class="size-1.5 rounded-full bg-gold"></span></span>
+                    <span class="flex items-center gap-16 whitespace-nowrap">El Croquis <span class="size-1.5 rounded-full bg-gold"></span></span>
+                </div>
+            </div>
+        </section>
 
-<script>
-function toggleFaq(el) {
-  const item = el.parentElement;
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
-}
-</script>
+        <!-- Testimonials Section -->
+        <section class="relative py-32 md:py-44">
+            <div class="mx-auto max-w-[1600px] px-6 md:px-10">
+                <div class="reveal">
+                    <div class="flex items-center gap-4">
+                        <span class="font-mono text-[11px] tracking-[0.3em] uppercase text-gold">07</span>
+                        <div class="h-px w-8 bg-border"></div>
+                        <span class="font-mono text-[11px] tracking-[0.3em] uppercase text-muted-foreground">Voices</span>
+                    </div>
+                </div>
 
+                <div class="mt-16 grid gap-6 md:grid-cols-3">
+                    <div class="reveal">
+                        <figure class="glass relative h-full rounded-sm p-8 md:p-10" style="box-shadow: 0 30px 80px -30px oklch(0 0 0 / 0.7), 0 10px 30px -15px oklch(0.82 0.105 80 / 0.15);">
+                            <span class="font-display text-7xl leading-none text-gold/40">“</span>
+                            <blockquote class="-mt-4 font-display text-xl md:text-2xl leading-snug text-balance">
+                                Aether didn't design a house — they composed a quiet, decade-long argument with the cliffside.
+                            </blockquote>
+                            <figcaption class="mt-10 border-t border-border pt-6">
+                                <div class="text-sm">Helena Vrancic</div>
+                                <div class="mt-1 text-[11px] tracking-[0.2em] uppercase text-muted-foreground">Private Client, Marin Pavilion</div>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="reveal" style="transition-delay: 120ms;">
+                        <figure class="glass relative h-full rounded-sm p-8 md:p-10" style="box-shadow: 0 30px 80px -30px oklch(0 0 0 / 0.7), 0 10px 30px -15px oklch(0.82 0.105 80 / 0.15);">
+                            <span class="font-display text-7xl leading-none text-gold/40">“</span>
+                            <blockquote class="-mt-4 font-display text-xl md:text-2xl leading-snug text-balance">
+                                A studio of unusual patience. Every detail arrived knowing exactly why it had to exist.
+                            </blockquote>
+                            <figcaption class="mt-10 border-t border-border pt-6">
+                                <div class="text-sm">Tomás Reig</div>
+                                <div class="mt-1 text-[11px] tracking-[0.2em] uppercase text-muted-foreground">Director, Porto Cultural Foundation</div>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="reveal" style="transition-delay: 240ms;">
+                        <figure class="glass relative h-full rounded-sm p-8 md:p-10" style="box-shadow: 0 30px 80px -30px oklch(0 0 0 / 0.7), 0 10px 30px -15px oklch(0.82 0.105 80 / 0.15);">
+                            <span class="font-display text-7xl leading-none text-gold/40">“</span>
+                            <blockquote class="-mt-4 font-display text-xl md:text-2xl leading-snug text-balance">
+                                Their drawings have the silence of late Tadao Ando and the precision of a watchmaker.
+                            </blockquote>
+                            <figcaption class="mt-10 border-t border-border pt-6">
+                                <div class="text-sm">Naomi Lindqvist</div>
+                                <div class="mt-1 text-[11px] tracking-[0.2em] uppercase text-muted-foreground">Curator, Nordic Architecture Triennial</div>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="relative py-32 md:py-44 overflow-hidden">
+            <div class="absolute inset-0 -z-10" style="background: radial-gradient(circle at 50% 80%, oklch(0.82 0.105 80 / 0.18), transparent 60%);"></div>
+            <div class="mx-auto max-w-[1600px] px-6 md:px-10">
+                <div class="reveal">
+                    <div class="flex items-center gap-4">
+                        <span class="font-mono text-[11px] tracking-[0.3em] uppercase text-gold">08</span>
+                        <div class="h-px w-8 bg-border"></div>
+                        <span class="font-mono text-[11px] tracking-[0.3em] uppercase text-muted-foreground">Commission</span>
+                    </div>
+                </div>
+                <div class="reveal" style="transition-delay: 100ms;">
+                    <h2 class="mt-10 font-display text-balance text-[12vw] md:text-[8vw] leading-[0.9] tracking-[-0.03em]">
+                        Begin a <em class="not-italic gold-text">conversation.</em>
+                    </h2>
+                </div>
+
+                <div class="mt-20 grid gap-12 md:grid-cols-12">
+                    <div class="md:col-span-5 space-y-10">
+                        <div class="reveal" style="transition-delay: 150ms;">
+                            <div>
+                                <div class="text-[11px] tracking-[0.3em] uppercase text-muted-foreground">Tokyo</div>
+                                <p class="mt-3 font-display text-2xl">3-14-1 Higashi · Shibuya<br>150-0011 Japan</p>
+                            </div>
+                        </div>
+                        <div class="reveal" style="transition-delay: 200ms;">
+                            <div>
+                                <div class="text-[11px] tracking-[0.3em] uppercase text-muted-foreground">Copenhagen</div>
+                                <p class="mt-3 font-display text-2xl">Strandgade 27B<br>1401 København K</p>
+                            </div>
+                        </div>
+                        <div class="reveal" style="transition-delay: 250ms;">
+                            <div class="pt-8 border-t border-border space-y-2">
+                                <a href="mailto:studio@aether.archi" class="block font-display text-2xl text-gold hover:underline underline-offset-4">
+                                    studio@aether.archi
+                                </a>
+                                <a href="tel:+810354210011" class="block font-mono text-sm text-muted-foreground">
+                                    +81 (0)3 5421 0011
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reveal md:col-span-7" style="transition-delay: 200ms;">
+                        <form onsubmit="event.preventDefault()" class="glass-strong rounded-sm p-8 md:p-12" style="box-shadow: 0 30px 80px -30px oklch(0 0 0 / 0.7), 0 10px 30px -15px oklch(0.82 0.105 80 / 0.15);">
+                            <div class="grid gap-8">
+                                <div class="space-y-3">
+                                    <label class="text-[11px] tracking-[0.3em] uppercase text-muted-foreground">Your name</label>
+                                    <input type="text" class="w-full bg-transparent border-b border-border py-3 text-lg outline-none focus:border-gold transition-colors placeholder:text-muted-foreground/40">
+                                </div>
+                                <div class="space-y-3">
+                                    <label class="text-[11px] tracking-[0.3em] uppercase text-muted-foreground">Email</label>
+                                    <input type="email" class="w-full bg-transparent border-b border-border py-3 text-lg outline-none focus:border-gold transition-colors placeholder:text-muted-foreground/40">
+                                </div>
+                                <div class="space-y-3">
+                                    <label class="text-[11px] tracking-[0.3em] uppercase text-muted-foreground">Project location</label>
+                                    <input type="text" class="w-full bg-transparent border-b border-border py-3 text-lg outline-none focus:border-gold transition-colors placeholder:text-muted-foreground/40">
+                                </div>
+                                <div class="space-y-3">
+                                    <label class="text-[11px] tracking-[0.3em] uppercase text-muted-foreground">Tell us about the site</label>
+                                    <textarea rows="4" class="w-full resize-none bg-transparent border-b border-border py-3 text-lg outline-none focus:border-gold transition-colors placeholder:text-muted-foreground/40" placeholder="A few sentences will do."></textarea>
+                                </div>
+                                <button type="submit" class="group mt-4 inline-flex items-center justify-between rounded-full border border-gold bg-gold px-8 py-5 text-[12px] tracking-[0.3em] uppercase text-background transition-all duration-500 hover:bg-transparent hover:text-gold">
+                                    Send enquiry
+                                    <span class="inline-block transition-transform duration-500 group-hover:translate-x-2">↗</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="mt-32 border-t border-border">
+                <div class="mx-auto flex max-w-[1600px] flex-col md:flex-row items-start md:items-center justify-between gap-6 px-6 md:px-10 py-10 text-[11px] tracking-[0.2em] uppercase text-muted-foreground">
+                    <div class="flex items-center gap-3">
+                        <span class="size-2 rounded-full bg-gold"></span>
+                        <span class="font-display normal-case tracking-normal text-foreground text-base">Aether</span>
+                        <span>© MMXXVI</span>
+                    </div>
+                    <div class="flex flex-wrap gap-8">
+                        <a href="#" class="hover:text-gold">Instagram</a>
+                        <a href="#" class="hover:text-gold">Are.na</a>
+                        <a href="#" class="hover:text-gold">Journal</a>
+                        <a href="#" class="hover:text-gold">Imprint</a>
+                    </div>
+                </div>
+            </footer>
+        </section>
+    </main>
+
+    <script>
+        // Loader Logic
+        const loader = document.getElementById('loader');
+        const loaderBar = document.getElementById('loader-bar');
+        const loaderPct = document.getElementById('loader-pct');
+        
+        let start = performance.now();
+        const dur = 2800;
+        
+        function updateLoader(now) {
+            const t = Math.min(1, (now - start) / dur);
+            const eased = 1 - Math.pow(1 - t, 4);
+            const pct = Math.floor(eased * 100);
+            
+            loaderBar.style.width = pct + '%';
+            loaderPct.innerText = pct.toString().padStart(3, '0');
+            
+            if (t < 1) {
+                requestAnimationFrame(updateLoader);
+            } else {
+                setTimeout(() => {
+                    loader.classList.add('opacity-0', 'pointer-events-none', 'scale-105');
+                }, 700);
+            }
+        }
+        requestAnimationFrame(updateLoader);
+
+        // Scroll and Mouse Interactions
+        const navbar = document.getElementById('navbar');
+        const navContainer = document.getElementById('nav-container');
+        const heroSky = document.getElementById('hero-sky');
+        const heroImg = document.getElementById('hero-img-container');
+        const heroHaze = document.getElementById('hero-haze');
+        const lensFlare = document.getElementById('lens-flare');
+        const heroSpotlight = document.getElementById('hero-spotlight');
+        const heroHeadline = document.getElementById('hero-headline');
+        const walkthroughImg = document.getElementById('walkthrough-img');
+        const walkthroughLight = document.getElementById('walkthrough-light');
+        const philosophyBg = document.getElementById('philosophy-bg');
+        
+        let mouseX = 0.5;
+        let mouseY = 0.5;
+        let curX = 0.5;
+        let curY = 0.5;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX / window.innerWidth;
+            mouseY = e.clientY / window.innerHeight;
+        });
+
+        function animate() {
+            // Smooth mouse follow
+            curX += (mouseX - curX) * 0.035;
+            curY += (mouseY - curY) * 0.035;
+
+            const scrollY = window.scrollY;
+            
+            // Navbar
+            if (scrollY > 40) {
+                navbar.classList.remove('py-6');
+                navbar.classList.add('py-3');
+                navContainer.classList.add('glass', 'rounded-full', 'py-2.5', 'px-4', 'md:px-6', 'max-w-[1100px]');
+            } else {
+                navbar.classList.add('py-6');
+                navbar.classList.remove('py-3');
+                navContainer.classList.remove('glass', 'rounded-full', 'py-2.5', 'px-4', 'md:px-6', 'max-w-[1100px]');
+            }
+
+            // Hero Parallax
+            const skyY = scrollY * 0.15;
+            const midY = scrollY * 0.32;
+            const fgY = scrollY * 0.55;
+            const camX = (curX - 0.5) * 28;
+            const camY = (curY - 0.5) * 18;
+            const opacity = Math.max(0, 1 - scrollY / 900);
+            const scale = 1.08 + scrollY * 0.0004;
+
+            heroSky.style.transform = `translate3d(0, ${skyY}px, 0)`;
+            heroImg.style.transform = `translate3d(${camX * 0.5}px, ${midY + camY * 0.5}px, 0) scale(${scale})`;
+            heroImg.style.opacity = opacity;
+            heroHaze.style.transform = `translate3d(${camX * 0.2}px, ${fgY * 0.3}px, 0)`;
+            
+            // Lens Flare
+            lensFlare.style.left = (curX * 100) + '%';
+            lensFlare.style.top = (curY * 100) + '%';
+            
+            heroSpotlight.style.background = `radial-gradient(600px circle at ${curX * 100}% ${curY * 100}%, oklch(0.82 0.105 80 / 0.08), transparent 70%)`;
+            
+            heroHeadline.style.transform = `translate3d(${camX * 0.15}px, ${camY * 0.15}px, 0)`;
+
+            // Walkthrough Animation
+            const walkRect = document.getElementById('walkthrough').getBoundingClientRect();
+            const walkProgress = Math.max(0, Math.min(1, 1 - (walkRect.top + walkRect.height / 2 - window.innerHeight / 2) / window.innerHeight));
+            const time = performance.now() / 1000;
+            const orbit = Math.sin(time * 0.18) * 6;
+            const drift = Math.cos(time * 0.14) * 12;
+            const rot = (walkProgress - 0.5) * 20 + orbit;
+            const walkScale = 1.02 + walkProgress * 0.18;
+
+            walkthroughImg.style.transform = `perspective(1600px) rotateY(${rot * 0.6}deg) rotateX(${orbit * 0.4}deg) translate3d(${drift}px, ${orbit * 2}px, 0) scale(${walkScale})`;
+            walkthroughLight.style.background = `radial-gradient(600px circle at ${50 + Math.cos(time * 0.18) * 35}% ${50 + Math.sin(time * 0.18) * 30}%, oklch(0.9 0.12 80 / 0.22), transparent 55%)`;
+            
+            document.getElementById('hud-x').innerText = (rot * 12).toFixed(0);
+            document.getElementById('hud-y').innerText = (walkProgress * 180).toFixed(0);
+            document.getElementById('hud-z').innerText = (walkScale * 100).toFixed(1);
+
+            // Philosophy Parallax
+            const philRect = document.getElementById('philosophy').getBoundingClientRect();
+            philosophyBg.style.transform = `translate3d(0, ${-philRect.top * 0.25}px, 0)`;
+
+            requestAnimationFrame(animate);
+        }
+        requestAnimationFrame(animate);
+
+        // Reveal Animation on Scroll
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -10% 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('shown');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Tilt Card Interaction
+        document.querySelectorAll('.tilt-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const r = card.getBoundingClientRect();
+                const x = (e.clientX - r.left) / r.width;
+                const y = (e.clientY - r.top) / r.height;
+                const rx = -(y - 0.5) * 8;
+                const ry = (x - 0.5) * 10;
+                
+                card.style.transform = `perspective(1400px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+                
+                const sheen = card.querySelector('.card-sheen');
+                if (sheen) {
+                    sheen.style.background = `radial-gradient(420px circle at ${x * 100}% ${y * 100}%, oklch(0.9 0.1 80 / 0.18), transparent 60%)`;
+                }
+                
+                const img = card.querySelector('img');
+                if (img) {
+                    img.style.transform = `scale(1.12) translate3d(${(x - 0.5) * -20}px, ${(y - 0.5) * -20}px, 0)`;
+                }
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1400px) rotateX(0deg) rotateY(0deg)`;
+                const img = card.querySelector('img');
+                if (img) {
+                    img.style.transform = `scale(1.02) translate3d(0, 0, 0)`;
+                }
+            });
+        });
+    </script>
 </body>
 </html>
