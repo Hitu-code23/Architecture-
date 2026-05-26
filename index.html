@@ -139,6 +139,46 @@
                 transform: translateY(0);
                 filter: blur(0);
             }
+            /* Custom Cursor */
+            #custom-cursor {
+                width: 20px;
+                height: 20px;
+                background: oklch(0.82 0.105 80);
+                border-radius: 50%;
+                position: fixed;
+                pointer-events: none;
+                z-index: 9999;
+                mix-blend-mode: difference;
+                transition: transform 0.2s ease, width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+                transform: translate(-50%, -50%);
+                opacity: 0;
+            }
+            #custom-cursor.hover {
+                transform: translate(-50%, -50%) scale(3);
+                background: transparent;
+                border: 1px solid oklch(0.82 0.105 80);
+            }
+            @media (hover: none) {
+                #custom-cursor { display: none; }
+            }
+            
+            /* Project Detail Panel */
+            #project-panel {
+                transform: translateX(100%);
+                transition: transform 0.8s cubic-bezier(0.7, 0, 0.2, 1);
+            }
+            #project-panel.open {
+                transform: translateX(0);
+            }
+            .panel-overlay {
+                opacity: 0;
+                transition: opacity 0.8s ease;
+                pointer-events: none;
+            }
+            #project-panel.open + .panel-overlay {
+                opacity: 1;
+                pointer-events: auto;
+            }
         }
 
         @keyframes fade-in {
@@ -166,6 +206,8 @@
 </head>
 <body class="relative min-h-screen">
 
+    <!-- Loader -->
+    <div id="custom-cursor"></div>
     <!-- Loader -->
     <div id="loader" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background transition-all duration-[1600ms] ease-[cubic-bezier(0.7,0,0.2,1)]">
         <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(ellipse at center, oklch(0.82 0.105 80 / 0.08) 0%, transparent 60%);"></div>
@@ -262,14 +304,14 @@
                 <span class="font-mono">22:14 GMT</span>
             </div>
 
-            <div class="relative z-10 mx-auto flex min-h-screen max-w-[1600px] flex-col justify-end px-6 pb-24 md:px-10 md:pb-32">
+            <div class="relative z-10 mx-auto flex min-h-screen max-w-[1600px] flex-col justify-end px-6 pb-40 md:px-10 md:pb-32">
                 <p class="font-mono text-[11px] tracking-[0.4em] uppercase text-gold mb-8 opacity-0" style="animation: fade-in 2.2s cubic-bezier(0.22,1,0.36,1) 0.6s forwards;">
                     — Architecture as Atmosphere
                 </p>
                 <h1 id="hero-headline" class="font-display text-balance text-[14vw] leading-[0.88] tracking-[-0.03em] md:text-[8.2vw] opacity-0" style="animation: fade-in 2.6s cubic-bezier(0.22,1,0.36,1) 0.9s forwards;">
                     Spaces that <em class="not-italic gold-text">breathe</em><br> light into form.
                 </h1>
-                <div class="mt-12 grid gap-10 md:grid-cols-[1.2fr_1fr_auto] md:items-end opacity-0" style="animation: fade-in 2.4s cubic-bezier(0.22,1,0.36,1) 1.4s forwards;">
+                <div class="mt-8 md:mt-12 grid gap-10 md:grid-cols-[1.2fr_1fr_auto] md:items-end opacity-0" style="animation: fade-in 2.4s cubic-bezier(0.22,1,0.36,1) 1.4s forwards;">
                     <p class="max-w-md text-pretty text-base text-muted-foreground leading-relaxed">
                         Aether is an architecture studio composing residences, cultural pavilions and civic landmarks across four continents — quiet structures shaped by climate, material and light.
                     </p>
@@ -850,6 +892,57 @@
         </section>
     </main>
 
+    <!-- Project Detail Panel -->
+    <div id="project-panel" class="fixed inset-y-0 right-0 z-[60] w-full md:w-[60%] lg:w-[50%] bg-background border-l border-border overflow-y-auto grain">
+        <div class="sticky top-0 z-10 flex items-center justify-between p-6 md:p-10 bg-background/80 backdrop-blur-md">
+            <div class="flex items-center gap-4">
+                <span id="panel-num" class="font-mono text-[11px] tracking-[0.3em] uppercase text-gold">01</span>
+                <div class="h-px w-8 bg-border"></div>
+                <span id="panel-category" class="font-mono text-[11px] tracking-[0.3em] uppercase text-muted-foreground">Cultural</span>
+            </div>
+            <button id="close-panel" class="group flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground hover:text-gold transition-colors">
+                Close <span class="text-xl transition-transform duration-500 group-hover:rotate-90">✕</span>
+            </button>
+        </div>
+        
+        <div class="px-6 pb-20 md:px-10 md:pb-32">
+            <h2 id="panel-title" class="font-display text-5xl md:text-7xl leading-[0.9] tracking-tight mt-8">Marin Pavilion</h2>
+            <p id="panel-location" class="mt-4 text-muted-foreground font-mono text-sm tracking-widest uppercase">Big Sur, California · 2025</p>
+            
+            <div class="mt-16 aspect-[16/10] w-full overflow-hidden rounded-sm border border-border">
+                <img id="panel-img" src="" alt="Project" class="h-full w-full object-cover">
+            </div>
+            
+            <div class="mt-16 grid gap-12 md:grid-cols-2">
+                <div class="space-y-6">
+                    <h3 class="font-display text-2xl">The Concept</h3>
+                    <p id="panel-desc" class="text-muted-foreground leading-relaxed">
+                        A quiet structure shaped by climate, material and light. The pavilion serves as a threshold between the rugged coastline and the redwood forest.
+                    </p>
+                </div>
+                <div class="space-y-8">
+                    <div>
+                        <div class="text-[10px] tracking-[0.3em] uppercase text-gold mb-2">Area</div>
+                        <div id="panel-area" class="font-display text-3xl">420 m²</div>
+                    </div>
+                    <div>
+                        <div class="text-[10px] tracking-[0.3em] uppercase text-gold mb-2">Materials</div>
+                        <div id="panel-materials" class="font-display text-3xl">Rammeled Earth, Cedar</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-20 pt-20 border-t border-border">
+                <h3 class="font-display text-2xl mb-10">Process Gallery</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="aspect-square bg-card rounded-sm border border-border"></div>
+                    <div class="aspect-square bg-card rounded-sm border border-border"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-overlay fixed inset-0 z-[55] bg-background/60 backdrop-blur-sm"></div>
+
     <script>
         // Loader Logic
         const loader = document.getElementById('loader');
@@ -1013,6 +1106,106 @@
                 mobileMenu.classList.add('translate-x-full');
                 mobileMenu.classList.remove('translate-x-0');
                 document.body.style.overflow = '';
+            });
+        });
+
+        // Custom Cursor Logic
+        const cursor = document.getElementById('custom-cursor');
+        window.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            cursor.style.opacity = '1';
+        });
+
+        document.querySelectorAll('a, button, .tilt-card').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+
+        // Project Panel Logic
+        const projectPanel = document.getElementById('project-panel');
+        const closePanel = document.getElementById('close-panel');
+        const overlay = document.querySelector('.panel-overlay');
+        
+        const projectData = {
+            'project-1': {
+                num: '01',
+                category: 'Cultural',
+                title: 'Marin Pavilion',
+                location: 'Big Sur, California · 2025',
+                desc: 'A practice of restraint, composed at the threshold of mass and light. The pavilion serves as a quiet observation point between the Pacific and the redwoods.',
+                area: '420 m²',
+                materials: 'Rammed Earth, Cedar',
+                img: document.querySelector('[data-project="project-1"] img')?.src || ''
+            },
+            'project-2': {
+                num: '02',
+                category: 'Residential',
+                title: 'Helix Tower',
+                location: 'Osaka, Japan · 2024',
+                desc: 'A vertical garden residence that redefines urban density through porous, light-filled voids and biophilic integration.',
+                area: '12,400 m²',
+                materials: 'White Concrete, Glass',
+                img: document.querySelector('[data-project="project-2"] img')?.src || ''
+            },
+            'project-3': {
+                num: '03',
+                category: 'Civic',
+                title: 'Vault Gallery',
+                location: 'Porto, Portugal · 2024',
+                desc: 'A subterranean art space carved from granite, utilizing deep light wells to illuminate contemporary sculpture.',
+                area: '2,800 m²',
+                materials: 'Local Granite, Steel',
+                img: document.querySelector('[data-project="project-3"] img')?.src || ''
+            }
+        };
+
+        function openProject(id) {
+            const data = projectData[id];
+            if (!data) return;
+            
+            document.getElementById('panel-num').innerText = data.num;
+            document.getElementById('panel-category').innerText = data.category;
+            document.getElementById('panel-title').innerText = data.title;
+            document.getElementById('panel-location').innerText = data.location;
+            document.getElementById('panel-desc').innerText = data.desc;
+            document.getElementById('panel-area').innerText = data.area;
+            document.getElementById('panel-materials').innerText = data.materials;
+            document.getElementById('panel-img').src = data.img;
+            
+            projectPanel.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProject() {
+            projectPanel.classList.remove('open');
+            if (!document.getElementById('mobile-menu').classList.contains('translate-x-0')) {
+                document.body.style.overflow = '';
+            }
+        }
+
+        closePanel.addEventListener('click', closeProject);
+        overlay.addEventListener('click', closeProject);
+
+        document.querySelectorAll('.tilt-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                e.preventDefault();
+                const id = card.getAttribute('data-project');
+                if (id) openProject(id);
+            });
+            
+            // Cursor interaction for cards
+            card.addEventListener('mouseenter', () => {
+                cursor.style.width = '80px';
+                cursor.style.height = '80px';
+                cursor.innerHTML = '<span class="text-[8px] tracking-widest text-gold uppercase">View</span>';
+                cursor.classList.add('flex', 'items-center', 'justify-center');
+            });
+            card.addEventListener('mouseleave', () => {
+                cursor.style.width = '20px';
+                cursor.style.height = '20px';
+                cursor.innerHTML = '';
+                cursor.classList.remove('flex', 'items-center', 'justify-center');
             });
         });
 
